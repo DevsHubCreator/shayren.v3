@@ -433,7 +433,7 @@ function library:CreateContainer()
 					else
 						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
 					end
-					db = value
+					db = not value
 					callback(db)
 				end
 				
@@ -790,9 +790,9 @@ function library:CreateContainer()
 
 				function setConfig:loadCfg(value)
 					sliderVal = value
-					ValueLabel.Text = sliderVal
+					ValueLabel.Text = value
 					Frame45.Size = UDim2.new(0, math.clamp(value - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
-					callback(sliderVal)
+					callback(value)
 				end
 
 				return setConfig
@@ -1318,7 +1318,7 @@ function library:CreateContainer()
 					else
 						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
 					end
-					db = value
+					db = not value
 					callback(db)
 				end
 
@@ -1829,7 +1829,7 @@ function library:CreateContainer()
 				ImageLabel.BackgroundTransparency = 1.000
 				ImageLabel.BorderSizePixel = 0
 				ImageLabel.Position = UDim2.new(-0.388407767, 0, -0.389846712, 0)
-				ImageLabel.Size = UDim2.new(0, 200, 0, 200)
+				ImageLabel.Size = UDim2.new(1.765, 0,1.733, 0)
 				ImageLabel.Image = "http://www.roblox.com/asset/?id=10822615828"
 				ImageLabel.ImageTransparency = 0.500
 
@@ -1844,7 +1844,7 @@ function library:CreateContainer()
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
 						spawn(function()
 							wait(.5)
-							if db then
+							if not db then
 								ColorChanger.Visible = false
 							end
 						end)

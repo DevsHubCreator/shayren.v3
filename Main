@@ -1,0 +1,1965 @@
+if not game:IsLoaded() then
+	repeat task.wait() until game:IsLoaded()
+end
+
+local plr = game:GetService("Players").LocalPlayer
+local ts = game:GetService("TweenService")
+local mouse = plr:GetMouse()
+local uis = game:GetService("UserInputService")
+
+local library = {}
+
+function library:CreateContainer()
+	local shayrengs = Instance.new("ScreenGui")
+	local Holder = Instance.new("Frame")
+	local Container = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local UICorner_6 = Instance.new("UICorner")
+	local HolderHider = Instance.new("Frame")
+	local ImageLabel = Instance.new("ImageLabel")
+	local TabsContainer = Instance.new("Frame")
+	local UIListLayout_99 = Instance.new("UIListLayout")
+	local Containers = Instance.new("Folder")
+	
+	shayrengs.Name = "shayren.gs"
+	shayrengs.Parent = game.Players.LocalPlayer.PlayerGui --(game:GetService("CoreGui") or gethui())
+
+	Holder.Name = "Holder"
+	Holder.Parent = shayrengs
+	Holder.BackgroundColor3 = Color3.fromRGB(20, 20, 40)
+	Holder.BorderSizePixel = 0
+	Holder.Position = UDim2.new(0.257507503, 0, 0.137462229, 0)
+	Holder.Size = UDim2.new(0, 597, 0, 38)
+	Holder.ZIndex = 2
+
+	Container.Name = "Container"
+	Container.Parent = Holder
+	Container.BackgroundColor3 = Color3.fromRGB(15, 15, 25)
+	Container.BorderSizePixel = 0
+	Container.Position = UDim2.new(0, 0, 0.686526835, 0)
+	Container.Size = UDim2.new(0, 597, 0, 409)
+
+	UICorner.Parent = Container
+	
+	UICorner_6.CornerRadius = UDim.new(0, 10)
+	UICorner_6.Parent = Holder
+
+	HolderHider.Name = "HolderHider"
+	HolderHider.Parent = Holder
+	HolderHider.BackgroundColor3 = Color3.fromRGB(20, 20, 40)
+	HolderHider.BorderSizePixel = 0
+	HolderHider.Position = UDim2.new(0, 0, 0.421052843, 0)
+	HolderHider.Size = UDim2.new(0, 597, 0, 22)
+	
+	local UIGradient = Instance.new("UIGradient")
+	
+	ImageLabel.Parent = Container
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BackgroundTransparency = 1.000
+	ImageLabel.BorderSizePixel = 0
+	ImageLabel.Position = UDim2.new(-0.171, 0,-0.303, 0)
+	ImageLabel.Size = UDim2.new(0, 800,0, 627)
+	ImageLabel.ZIndex = 0
+	ImageLabel.Image = "rbxassetid://12543892659"
+	ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.Transparency = 1
+	ImageLabel.ImageTransparency = 0.63
+	
+	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(161, 103, 248)), ColorSequenceKeypoint.new(0.49, Color3.fromRGB(120, 71, 226)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(41, 138, 203))}
+	UIGradient.Parent = ImageLabel
+	
+	TabsContainer.Name = "TabsContainer"
+	TabsContainer.Parent = Holder
+	TabsContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabsContainer.BackgroundTransparency = 1.000
+	TabsContainer.BorderSizePixel = 0
+	TabsContainer.Position = UDim2.new(0.0117252935, 0, 0, 0)
+	TabsContainer.Size = UDim2.new(0, 582, 0, 38)
+	TabsContainer.ZIndex = 2
+	
+	UIListLayout_99.Parent = TabsContainer
+	UIListLayout_99.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout_99.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout_99.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout_99.Padding = UDim.new(0, 5)
+	
+	Containers.Name = "Containers"
+	Containers.Parent = Container
+
+	spawn(function()
+		while task.wait() do
+			if UIGradient.Rotation > 360 then
+				UIGradient.Rotation = 0
+			end
+			UIGradient.Rotation += math.random(1,5)
+		end
+	end)
+	
+	local drawTab = {}
+	
+	function drawTab:CreateTab(name)
+		local Tab1 = Instance.new("TextButton")
+		local UICorner = Instance.new("UICorner")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local Main1 = Instance.new("Frame")
+		
+		local LeftDraw = Instance.new("Frame")
+		local RightDraw = Instance.new("Frame")
+		
+		local UIListLayout_2 = Instance.new("UIListLayout")
+		local UIListLayout_4 = Instance.new("UIListLayout")
+
+		Tab1.Name = "Tab1"
+		Tab1.Parent = TabsContainer
+		Tab1.BackgroundColor3 = Color3.fromRGB(27, 27, 54)
+		Tab1.BorderSizePixel = 0
+		Tab1.Position = UDim2.new(0, 0, 0.236842111, 0)
+		Tab1.Size = UDim2.new(0, 113, 0, 29)
+		Tab1.ZIndex = 3
+		Tab1.AutoButtonColor = false
+		Tab1.Font = Enum.Font.SourceSans
+		Tab1.Text = ""
+		Tab1.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Tab1.TextSize = 14.000
+
+		UICorner.Parent = Tab1
+
+		Frame.Parent = Tab1
+		Frame.BackgroundColor3 = Color3.fromRGB(27, 27, 54)
+		Frame.BorderSizePixel = 0
+		Frame.Position = UDim2.new(0, 0, 0.241379574, 0)
+		Frame.Size = UDim2.new(0, 113, 0, 22)
+		Frame.ZIndex = 2
+
+		TextLabel.Parent = Tab1
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextLabel.BackgroundTransparency = 1.000
+		TextLabel.BorderSizePixel = 0
+		TextLabel.Position = UDim2.new(0.110051513, 0, 0.206896305, 0)
+		TextLabel.Size = UDim2.new(0, 87, 0, 17)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.Gotham
+		TextLabel.Text = name
+		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 14.000
+		TextLabel.TextWrapped = true
+		
+		Main1.Name = "Main1"
+		Main1.Parent = Containers
+		Main1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Main1.BackgroundTransparency = 1.000
+		Main1.Size = UDim2.new(0, 597, 0, 409)
+		
+		LeftDraw.Name = "LeftDraw"
+		LeftDraw.Parent = Main1
+		LeftDraw.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		LeftDraw.BackgroundTransparency = 1.000
+		LeftDraw.BorderSizePixel = 0
+		LeftDraw.Position = UDim2.new(0.0117252935, 0, 0.0488997549, 0)
+		LeftDraw.Size = UDim2.new(0, 287, 0, 382)
+
+		UIListLayout_2.Parent = LeftDraw
+		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_2.Padding = UDim.new(0, 5)
+
+		RightDraw.Name = "RightDraw"
+		RightDraw.Parent = Main1
+		RightDraw.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		RightDraw.BackgroundTransparency = 1.000
+		RightDraw.BorderSizePixel = 0
+		RightDraw.Position = UDim2.new(0.505862653, 0, 0.0488997549, 0)
+		RightDraw.Size = UDim2.new(0, 287, 0, 382)
+
+		UIListLayout_4.Parent = RightDraw
+		UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_4.Padding = UDim.new(0, 5)
+		
+		Tab1.MouseButton1Click:Connect(function()
+			for i,v in pairs(Containers:GetChildren()) do
+				if v:IsA("Frame") then
+					v.Visible = false
+				end
+			end
+			
+			Main1.Visible = true
+		end)
+		
+		local drawGroup = {}
+		
+		function drawGroup:CreateLeftGroup()
+			local groupSize = 0
+
+			local function resize(value)
+				groupSize = groupSize + value
+			end
+
+			local Group = Instance.new("Frame")
+			local UICorner = Instance.new("UICorner")
+			local Frame = Instance.new("Frame")
+			local UIListLayout = Instance.new("UIListLayout")
+
+			Group.Name = "Group"
+			Group.Parent = LeftDraw
+			Group.BackgroundColor3 = Color3.fromRGB(20, 20, 35)
+			Group.BorderSizePixel = 0
+			Group.Position = UDim2.new(-0.00178352382, 0, -0.000230239952, 0)
+			Group.Size = UDim2.new(0, 287, 0, 0)
+
+			UICorner.CornerRadius = UDim.new(0, 10)
+			UICorner.Parent = Group
+
+			Frame.Parent = Group
+			Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Frame.BackgroundTransparency = 1.000
+			Frame.BorderSizePixel = 0
+			Frame.Position = UDim2.new(0.024390243, 0, 0.0287958533, 0)
+			Frame.Size = UDim2.new(0, 271, 0, 192)
+
+			UIListLayout.Parent = Frame
+			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+			UIListLayout.Padding = UDim.new(0, 3)
+
+			spawn(function()
+				while true do
+					ts:Create(Group,TweenInfo.new(2),{Size = UDim2.new(0, 287, 0, groupSize)}):Play()
+					wait(1)
+				end
+			end)
+
+			local drawSections = {}
+
+			function drawSections:CreateButton(name,callback)
+
+				callback = callback or function() end
+
+				resize(29 + 4.7)
+
+				local DrawButton = Instance.new("TextButton")
+				local TextLabel = Instance.new("TextLabel")
+				local UICorner_2 = Instance.new("UICorner")
+
+				DrawButton.Name = "DrawButton"
+				DrawButton.Parent = Frame
+				DrawButton.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawButton.BorderSizePixel = 0
+				DrawButton.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawButton.Size = UDim2.new(0, 271, 0, 29)
+				DrawButton.Font = Enum.Font.SourceSans
+				DrawButton.Text = ""
+				DrawButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawButton.TextSize = 14.000
+
+				TextLabel.Parent = DrawButton
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+				TextLabel.Size = UDim2.new(0, 140, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICorner_2.CornerRadius = UDim.new(0, 5)
+				UICorner_2.Parent = DrawButton
+
+				local db = false
+
+				DrawButton.MouseButton1Click:Connect(function()
+					callback()
+				end)
+				
+			end
+
+			function drawSections:CreateToggle(name,callback)
+				
+				local key = nil
+				local waitKey = false
+
+				callback = callback or function() end
+
+				resize(29 + 4.7)
+
+				local DrawToggle = Instance.new("TextButton")
+				local UICorner = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local Box = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke = Instance.new("UIStroke")
+				local ImageLabel = Instance.new("ImageLabel")
+
+				DrawToggle.Name = "DrawToggle"
+				DrawToggle.Parent = Frame
+				DrawToggle.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawToggle.BorderSizePixel = 0
+				DrawToggle.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawToggle.Size = UDim2.new(0, 271, 0, 29)
+				DrawToggle.Font = Enum.Font.SourceSans
+				DrawToggle.Text = ""
+				DrawToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawToggle.TextSize = 14.000
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawToggle
+
+				TextLabel.Parent = DrawToggle
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+				TextLabel.Size = UDim2.new(0, 140, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				Box.Name = "Box"
+				Box.Parent = DrawToggle
+				Box.BackgroundColor3 = Color3.fromRGB(57, 58, 81)
+				Box.BorderSizePixel = 0
+				Box.Position = UDim2.new(0.904999971, 0, 0.137999997, 0)
+				Box.Size = UDim2.new(0, 20, 0, 20)
+
+				UICorner_2.CornerRadius = UDim.new(0, 5)
+				UICorner_2.Parent = Box
+
+				UIStroke.Color = Color3.fromRGB(38, 39, 61)
+				UIStroke.Thickness = 1.500
+				UIStroke.Parent = Box
+
+				ImageLabel.Parent = Box
+				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageLabel.BackgroundTransparency = 1.000
+				ImageLabel.BorderSizePixel = 0
+				ImageLabel.Position = UDim2.new(0.100000001, 0, 0.100000061, 0)
+				ImageLabel.Size = UDim2.new(0, 15, 0, 15)
+				ImageLabel.Image = "rbxassetid://12543135185"
+				ImageLabel.ImageColor3 = Color3.fromRGB(169, 158, 213)
+				ImageLabel.ImageTransparency = 1.000
+
+				local db = false
+				
+				uis.InputBegan:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.Keyboard then
+						if key ~= nil then
+							if input.KeyCode == Enum.KeyCode[key] then
+								if not db then
+									ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+								else
+									ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+								end
+								db = not db
+								callback(db)
+							end
+						end
+					end
+				end)
+
+				DrawToggle.MouseButton1Click:Connect(function()
+					if not db then
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+					else
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+					end
+					db = not db
+					callback(db)
+				end)
+
+				local KeybindFrame = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+				local TextBox = Instance.new("TextBox")
+
+				KeybindFrame.Name = "KeybindFrame"
+				KeybindFrame.Parent = DrawToggle
+				KeybindFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 30)
+				KeybindFrame.BorderSizePixel = 0
+				KeybindFrame.Position = UDim2.new(0.745, 0,0.31, 0)
+				KeybindFrame.Size = UDim2.new(0, 37, 0, 15)
+
+				UICorner.CornerRadius = UDim.new(0, 4)
+				UICorner.Parent = KeybindFrame
+
+				TextBox.Parent = KeybindFrame
+				TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextBox.BackgroundTransparency = 1.000
+				TextBox.BorderSizePixel = 0
+				TextBox.Size = UDim2.new(0, 37, 0, 14)
+				TextBox.Font = Enum.Font.Gotham
+				TextBox.Text = ""
+				TextBox.TextColor3 = Color3.fromRGB(171, 185, 223)
+				TextBox.TextSize = 14.000
+				
+				uis.InputBegan:Connect(function(input,chat)
+					if input.UserInputType == Enum.UserInputType.Keyboard then
+						if chat then
+							
+							spawn(function()
+								wait(.2)
+								
+								if waitKey then
+									key = uis:GetStringForKeyCode(input.KeyCode)
+								end
+							end)
+							
+						end
+					end
+				end)
+				
+				TextBox.Focused:Connect(function()
+					waitKey = true
+				end)
+
+				TextBox.FocusLost:Connect(function(enter)
+					if enter then
+						waitKey = false
+						TextBox.Text = tostring(key)
+					end
+				end)
+				
+				
+				local setConfig = {}
+				
+				function setConfig:loadCfg(value)
+					if not value then
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+					else
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+					end
+					db = value
+					callback(db)
+				end
+				
+				return setConfig
+			end
+
+			function drawSections:CreateDropdown(name,varbs,callback)
+
+				local dropdownSize = 0
+
+				callback = callback or function() end
+				varbs = varbs or function() end
+
+				resize(29 + 4.7)
+
+				local DrawDropdown = Instance.new("TextButton")
+				local UICorner = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local ImageLabel = Instance.new("ImageLabel")
+				local Dropdown = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke = Instance.new("UIStroke")
+				local UiListlayout = Instance.new("UIListLayout")
+				local UiPadding = Instance.new("UIPadding")
+
+				DrawDropdown.Name = "DrawDropdown"
+				DrawDropdown.Parent = Frame
+				DrawDropdown.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawDropdown.BorderSizePixel = 0
+				DrawDropdown.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawDropdown.Size = UDim2.new(0, 271, 0, 29)
+				DrawDropdown.ZIndex = 2
+				DrawDropdown.Font = Enum.Font.SourceSans
+				DrawDropdown.Text = ""
+				DrawDropdown.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawDropdown.TextSize = 14.000
+				DrawDropdown.ZIndex = 3
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawDropdown
+
+				TextLabel.Parent = DrawDropdown
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+				TextLabel.Size = UDim2.new(0, 140, 0, 14)
+				TextLabel.ZIndex = 2
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+				TextLabel.ZIndex = 3
+
+				ImageLabel.Parent = DrawDropdown
+				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageLabel.BackgroundTransparency = 1.000
+				ImageLabel.BorderSizePixel = 0
+				ImageLabel.Position = UDim2.new(0.915, 0, 0.272, 0)
+				ImageLabel.Rotation = -180.000
+				ImageLabel.Size = UDim2.new(0, 13, 0, 13)
+				ImageLabel.ZIndex = 2
+				ImageLabel.Image = "rbxassetid://12544120018"
+				ImageLabel.ImageColor3 = Color3.fromRGB(169, 158, 213)
+				ImageLabel.ZIndex = 3
+
+				Dropdown.Name = "Dropdown"
+				Dropdown.Parent = DrawDropdown
+				Dropdown.BackgroundColor3 = Color3.fromRGB(26, 26, 45)
+				Dropdown.BorderSizePixel = 0
+				Dropdown.Position = UDim2.new(0.0147601487, 0, 0.758620679, 0)
+				Dropdown.ClipsDescendants = true
+				Dropdown.ZIndex = 2
+
+				Dropdown.Size = UDim2.new(0, 263, 0, 0)
+
+				UICorner_2.Parent = Dropdown
+
+				UIStroke.Color = Color3.fromRGB(29, 29, 49)
+				UIStroke.Thickness = 2.000
+				UIStroke.Parent = Dropdown
+
+				UiListlayout.Parent = Dropdown
+				UiListlayout.SortOrder = Enum.SortOrder.LayoutOrder
+				UiListlayout.Padding = UDim.new(0, -27)
+				UiListlayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+				UiPadding.Parent = Dropdown
+				UiPadding.PaddingTop = UDim.new(0, 10)
+
+				local db = false
+
+				DrawDropdown.MouseButton1Click:Connect(function()
+					if not db then
+						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = 0}):Play()
+						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, dropdownSize)}):Play()
+						Dropdown.ZIndex += 2
+						ImageLabel.ZIndex += 2
+						TextLabel.ZIndex += 2
+						DrawDropdown.ZIndex += 2
+					else
+						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
+						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
+						Dropdown.ZIndex -= 2
+						ImageLabel.ZIndex -= 2
+						TextLabel.ZIndex -= 2
+						DrawDropdown.ZIndex -= 2
+					end
+
+					db = not db
+				end)
+
+				local ss = -27
+
+				spawn(function()
+					while task.wait() do
+						if not db then
+							if ss > -27 then
+								ss -= 2
+								UiListlayout.Padding = UDim.new(0,tonumber(ss))
+							end
+						else
+							if ss < 2 then
+								ss += 1
+								UiListlayout.Padding = UDim.new(0,tonumber(ss))
+							end
+						end
+					end
+				end)
+
+				for i,v in pairs(varbs) do
+					dropdownSize = dropdownSize + (27 + 5)
+
+					local TextButton = Instance.new("TextButton")
+					local TextLabel = Instance.new("TextLabel")
+					local UICorner = Instance.new("UICorner")
+
+					TextButton.Parent = Dropdown
+					TextButton.BackgroundColor3 = Color3.fromRGB(35, 35, 57)
+					TextButton.BorderSizePixel = 0
+					TextButton.Position = UDim2.new(0.11, 0, 0.067, 0)
+					TextButton.Size = UDim2.new(0, 256, 0, 27)
+					TextButton.Font = Enum.Font.SourceSans
+					TextButton.Text = ""
+					TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+					TextButton.TextSize = 14.000
+					TextButton.ZIndex = 2
+
+					TextLabel.Parent = TextButton
+					TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					TextLabel.BackgroundTransparency = 1.000
+					TextLabel.BorderSizePixel = 0
+					TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+					TextLabel.Size = UDim2.new(0, 140, 0, 14)
+					TextLabel.ZIndex = 2
+					TextLabel.Font = Enum.Font.Gotham
+					TextLabel.Text = tostring(v)
+					TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+					TextLabel.TextScaled = true
+					TextLabel.TextSize = 14.000
+					TextLabel.TextWrapped = true
+					TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+					TextLabel.ZIndex = 2
+
+					UICorner.CornerRadius = UDim.new(0, 5)
+					UICorner.Parent = TextButton
+
+					spawn(function()
+						while wait() do
+							if not db then
+								if TextButton.Transparency ~= 1 then
+									ts:Create(TextButton,TweenInfo.new(.2),{Transparency = 1}):Play()
+									ts:Create(TextLabel,TweenInfo.new(.2),{TextTransparency = 1}):Play()
+									TextLabel.ZIndex = 2
+									TextButton.ZIndex = 2
+								end
+							else
+								if TextButton.Transparency ~= 0 then
+									ts:Create(TextButton,TweenInfo.new(.5),{Transparency = 0}):Play()
+									ts:Create(TextLabel,TweenInfo.new(.5),{TextTransparency = 0}):Play()
+									TextLabel.ZIndex = 4
+									TextButton.ZIndex = 4
+								end
+							end
+						end
+					end)
+
+					TextButton.MouseButton1Click:Connect(function()
+						callback(tostring(TextLabel.Text))
+
+						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
+						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
+
+						Dropdown.ZIndex -= 2
+						ImageLabel.ZIndex -= 2
+						TextLabel.ZIndex -= 2
+						DrawDropdown.ZIndex -= 2
+
+						db = false
+					end)
+					
+					local setConfig = {}
+
+					function setConfig:loadCfg(value)
+						db = value
+						callback(db)
+					end
+
+					return setConfig
+				end
+			end
+
+			function drawSections:CreateSlider(name,min,max,callback)
+				resize(29 + 4.7)
+
+				callback = callback or function() end
+
+				min = min or 0
+				max = max or 10
+
+				local sliderVal
+
+				local DrawSlider = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local Box = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local BoxButton = Instance.new("TextButton")
+				local Frame45 = Instance.new("Frame")
+				local Circle = Instance.new("Frame")
+				local UICorner_3 = Instance.new("UICorner")
+				local ValueLabel = Instance.new("TextLabel")
+
+				DrawSlider.Name = "DrawSlider"
+				DrawSlider.Parent = Frame
+				DrawSlider.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawSlider.BorderSizePixel = 0
+				DrawSlider.Position = UDim2.new(0, 0, 0.166666672, 0)
+				DrawSlider.Size = UDim2.new(0, 271, 0, 29)
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawSlider
+
+				TextLabel.Parent = DrawSlider
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054171, 0, 0.137931019, 0)
+				TextLabel.Size = UDim2.new(0, 208, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				Box.Name = "Box"
+				Box.Parent = DrawSlider
+				Box.BackgroundColor3 = Color3.fromRGB(20, 20, 34)
+				Box.BorderSizePixel = 0
+				Box.Position = UDim2.new(0.0299999993, 0, 0.699999988, 0)
+				Box.Size = UDim2.new(0, 256, 0, 4)
+
+				UICorner_2.CornerRadius = UDim.new(1, 0)
+				UICorner_2.Parent = Box
+
+				BoxButton.Name = "BoxButton"
+				BoxButton.Parent = Box
+				BoxButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				BoxButton.BackgroundTransparency = 1.000
+				BoxButton.BorderSizePixel = 0
+				BoxButton.Position = UDim2.new(0, 0, -0.75, 0)
+				BoxButton.Size = UDim2.new(0, 256, 0, 11)
+				BoxButton.Font = Enum.Font.SourceSans
+				BoxButton.Text = ""
+				BoxButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+				BoxButton.TextSize = 14.000
+
+				Circle.Name = "Circle"
+				Circle.Parent = Box
+				Circle.BackgroundColor3 = Color3.fromRGB(189, 187, 255)
+				Circle.BorderSizePixel = 0
+				Circle.Position = UDim2.new(0.4765625, 0, -1, 0)
+				Circle.Size = UDim2.new(0, 11, 0, 11)
+				Circle.ZIndex = 2
+
+				UICorner_3.CornerRadius = UDim.new(1, 0)
+				UICorner_3.Parent = Circle
+
+				Frame45.Parent = BoxButton
+				Frame45.BackgroundColor3 = Color3.fromRGB(71, 71, 118)
+				Frame45.BorderSizePixel = 0
+				Frame45.Position = UDim2.new(0, 0, 0.272727281, 0)
+				Frame45.Size = UDim2.new(0, 122, 0, 4)
+
+				ValueLabel.Name = "ValueLabel"
+				ValueLabel.Parent = DrawSlider
+				ValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ValueLabel.BackgroundTransparency = 1.000
+				ValueLabel.BorderSizePixel = 0
+				ValueLabel.Position = UDim2.new(0.797859669, 0, 0.241379306, 0)
+				ValueLabel.Size = UDim2.new(0, 48, 0, 11)
+				ValueLabel.Font = Enum.Font.Gotham
+				ValueLabel.Text = tostring(min + max)
+				ValueLabel.TextColor3 = Color3.fromRGB(148, 148, 148)
+				ValueLabel.TextScaled = true
+				ValueLabel.TextSize = 14.000
+				ValueLabel.TextWrapped = true
+				ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+				BoxButton.MouseButton1Down:Connect(function()
+					sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min)) or 0
+					pcall(function()
+						callback(sliderVal)
+					end)
+					Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+					Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), -1, 0)
+					moveconnection = mouse.Move:Connect(function()
+						sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min))
+
+						ValueLabel.Text = sliderVal
+
+						pcall(function()
+							callback(sliderVal)
+						end)
+
+						Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+						Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), -1, 0)
+					end)
+					releaseconnection = uis.InputEnded:Connect(function(Mouse)
+						if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+							sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min))
+
+							ValueLabel.Text = sliderVal
+
+							pcall(function()
+								callback(sliderVal)
+							end)
+
+							Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+							Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), -1, 0)
+
+							moveconnection:Disconnect()
+							releaseconnection:Disconnect()
+						end
+					end)
+				end)
+				
+				local setConfig = {}
+
+				function setConfig:loadCfg(value)
+					sliderVal = value
+					ValueLabel.Text = sliderVal
+					Frame45.Size = UDim2.new(0, math.clamp(value - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+					callback(sliderVal)
+				end
+
+				return setConfig
+			end
+			
+			function drawSections:CreateColorPicker(name,starter,callback)
+				resize(29 + 4.7)
+				callback = callback or function() end
+				
+				starter = starter or {255,255,255}
+				
+				local DrawColorpicker = Instance.new("TextButton")
+				local TextLabel = Instance.new("TextLabel")
+				local UICorner = Instance.new("UICorner")
+				local ActualColor = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke = Instance.new("UIStroke")
+				local ColorChanger = Instance.new("Frame")
+				local UICorner_3 = Instance.new("UICorner")
+				local UIStroke_2 = Instance.new("UIStroke")
+				local Wheel = Instance.new("ImageButton")
+				local Ring = Instance.new("ImageLabel")
+				local Slider = Instance.new("ImageButton")
+				local Slide = Instance.new("Frame")
+				local UICorner_4 = Instance.new("UICorner")
+				local UIStroke_3 = Instance.new("UIStroke")
+				local UIStroke_4 = Instance.new("UIStroke")
+				local UICorner_5 = Instance.new("UICorner")
+				local ImageLabel = Instance.new("ImageLabel")
+				
+				DrawColorpicker.Name = "DrawColorpicker"
+				DrawColorpicker.Parent = Frame
+				DrawColorpicker.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawColorpicker.BorderSizePixel = 0
+				DrawColorpicker.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawColorpicker.Size = UDim2.new(0, 271, 0, 29)
+				DrawColorpicker.AutoButtonColor = false
+				DrawColorpicker.Font = Enum.Font.SourceSans
+				DrawColorpicker.Text = ""
+				DrawColorpicker.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawColorpicker.TextSize = 14.000
+
+				TextLabel.Parent = DrawColorpicker
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054171, 0, 0.241379306, 0)
+				TextLabel.Size = UDim2.new(0, 208, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawColorpicker
+
+				ActualColor.Name = "ActualColor"
+				ActualColor.Parent = DrawColorpicker
+				ActualColor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ActualColor.BorderSizePixel = 0
+				ActualColor.Position = UDim2.new(0.837638378, 0, 0.237930819, 0)
+				ActualColor.Size = UDim2.new(0, 37, 0, 15)
+
+				UICorner_2.CornerRadius = UDim.new(0, 5)
+				UICorner_2.Parent = ActualColor
+
+				UIStroke.Color = Color3.fromRGB(214, 214, 214)
+				UIStroke.Thickness = 1.500
+				UIStroke.Transparency = 0.500
+				UIStroke.Parent = ActualColor
+				
+				ColorChanger.Name = "ColorChanger"
+				ColorChanger.Parent = DrawColorpicker
+				ColorChanger.BackgroundColor3 = Color3.fromRGB(31, 31, 52)
+				ColorChanger.BorderSizePixel = 0
+				ColorChanger.Position = UDim2.new(0.00369003601, 0, 1.10344827, 0)
+				ColorChanger.Size = UDim2.new(0, 136, 0, 119)
+				ColorChanger.Visible = false
+
+				UICorner_3.Parent = ColorChanger
+
+				UIStroke_2.Color = Color3.fromRGB(45, 45, 76)
+				UIStroke_2.Thickness = 1.500
+				UIStroke_2.Parent = ColorChanger
+
+				Wheel.Name = "Wheel"
+				Wheel.Parent = ColorChanger
+				Wheel.Active = false
+				Wheel.BackgroundColor3 = Color3.fromRGB(248, 248, 248)
+				Wheel.BackgroundTransparency = 1.000
+				Wheel.Position = UDim2.new(0, 0, 0.0300000608, 0)
+				Wheel.Selectable = false
+				Wheel.Size = UDim2.new(0.95195806, 0, 0.96999985, 0)
+				Wheel.SizeConstraint = Enum.SizeConstraint.RelativeYY
+				Wheel.AutoButtonColor = false
+				Wheel.Image = "rbxassetid://2849458409"
+
+				Ring.Name = "Ring"
+				Ring.Parent = Wheel
+				Ring.AnchorPoint = Vector2.new(0.5, 0.5)
+				Ring.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Ring.BackgroundTransparency = 1.000
+				Ring.BorderSizePixel = 0
+				Ring.Position = UDim2.new(0.5, 0, 0.5, 0)
+				Ring.Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
+				Ring.SizeConstraint = Enum.SizeConstraint.RelativeYY
+				Ring.Image = "rbxassetid://244221613"
+				Ring.ImageColor3 = Color3.fromRGB(0, 0, 0)
+
+				Slider.Name = "Slider"
+				Slider.Parent = Wheel
+				Slider.Active = false
+				Slider.BackgroundColor3 = Color3.fromRGB(248, 248, 248)
+				Slider.BorderSizePixel = 0
+				Slider.Position = UDim2.new(1.04873955, 0, 0, 0)
+				Slider.Selectable = false
+				Slider.Size = UDim2.new(0.150000006, 0, 1, 0)
+				Slider.SizeConstraint = Enum.SizeConstraint.RelativeYY
+				Slider.AutoButtonColor = false
+				Slider.Image = "rbxassetid://156579757"
+
+				Slide.Name = "Slide"
+				Slide.Parent = Slider
+				Slide.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+				Slide.BackgroundTransparency = 1.000
+				Slide.BorderSizePixel = 0
+				Slide.Position = UDim2.new(0.019060161, 0, -0.00866326131, 0)
+				Slide.Size = UDim2.new(0.980941355, 0, 0.146818325, 0)
+
+				UICorner_4.Parent = Slide
+
+				UIStroke_3.Color = Color3.fromRGB(53, 53, 53)
+				UIStroke_3.Thickness = 2.000
+				UIStroke_3.Parent = Slide
+
+				UIStroke_4.Color = Color3.fromRGB(159, 159, 159)
+				UIStroke_4.Thickness = 1.500
+				UIStroke_4.Parent = Slider
+
+				UICorner_5.Parent = Slider
+
+				ImageLabel.Parent = Wheel
+				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageLabel.BackgroundTransparency = 1.000
+				ImageLabel.BorderSizePixel = 0
+				ImageLabel.Position = UDim2.new(-0.388407767, 0, -0.389846712, 0)
+				ImageLabel.Size = UDim2.new(1.765, 0,1.733, 0)
+				ImageLabel.Image = "http://www.roblox.com/asset/?id=10822615828"
+				ImageLabel.ImageTransparency = 0.500
+				
+				local db = false
+				
+				DrawColorpicker.MouseButton1Click:Connect(function()
+					if not db then
+						ColorChanger.Size = UDim2.new(0,0,0,0)
+						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 136, 0, 119)}):Play()
+						ColorChanger.Visible = true
+					else
+						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
+						spawn(function()
+							wait(.5)
+							if not db then
+								ColorChanger.Visible = false
+							end
+						end)
+					end
+					
+					db = not db
+				end)
+
+				----------------------------
+				
+				local ceil,clamp,atan2,pi = math.ceil,math.clamp,math.atan2,math.pi
+				local tostr,sub = tostring,string.sub
+				local fromHSV = Color3.fromHSV
+				local v2,udim2 = Vector2.new,UDim2.new
+				
+				
+				local WheelDown	= false
+				local SlideDown	= false
+				
+				local function toPolar(v)
+					return atan2(v.y, v.x), v.magnitude;
+				end
+
+				local function radToDeg(x)
+					return ((x + pi) / (2 * pi)) * 360;
+				end
+				
+				local hue, saturation, value = 0, 0, 1;
+
+				local function update()
+					local c = fromHSV(hue, saturation, value);
+
+					ActualColor.BackgroundColor3 = c
+					ActualColor.UIStroke.Color = c
+					Slider.UIStroke.Color = c
+					Wheel.ImageLabel.ImageColor3 = c
+					
+					callback(
+						sub(tostr(ceil(clamp(c.r*255,0,255))),1,3)..", "..
+						sub(tostr(ceil(clamp(c.g*255,0,255))),1,3)..", "..
+						sub(tostr(ceil(clamp(c.b*255,0,255))),1,3)
+					)
+				end
+				
+				local function UpdateSlide(iX,iY)	
+					local rY = iY - Slider.AbsolutePosition.y;
+					local cY = clamp(rY, 0, Slider.AbsoluteSize.y - Slide.AbsoluteSize.y);
+					Slide.Position = udim2(0, 0, 0, cY);
+
+					value = 1 - (cY / (Slider.AbsoluteSize.y - Slide.AbsoluteSize.y));
+					Slide.BackgroundColor3 = fromHSV(0, 0, 1-value);
+
+					update();
+				end
+				local function UpdateRing(iX,iY)
+					local r = Wheel.AbsoluteSize.x/2
+					local d = v2(iX, iY) - Wheel.AbsolutePosition - Wheel.AbsoluteSize/2;
+
+					if (d:Dot(d) > r*r) then
+						d = d.unit * r;
+					end
+
+					Ring.Position = udim2(0.5, d.x, 0.5, d.y);
+
+					local phi, len = toPolar(d * v2(1, -1));
+					hue, saturation = radToDeg(phi)/360, len / r;
+					Slider.BackgroundColor3 = fromHSV(hue, saturation, 1);
+
+					update();
+				end
+				
+				Wheel.MouseButton1Down:Connect(function()
+					WheelDown = true
+					UpdateRing(mouse.X,mouse.Y)
+				end)
+				Slider.MouseButton1Down:Connect(function()
+					SlideDown = true
+					UpdateSlide(mouse.X,mouse.Y)
+				end)
+
+
+				uis.InputEnded:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						WheelDown = false
+						SlideDown = false
+					end
+				end)
+
+				Wheel.MouseMoved:Connect(function()
+					if WheelDown then
+						UpdateRing(mouse.X,mouse.Y)
+					end
+				end)
+				Slider.MouseMoved:Connect(function()
+					if SlideDown then
+						UpdateSlide(mouse.X,mouse.Y)
+					end
+				end)
+				
+				local setConfig = {}
+
+				function setConfig:loadCfg(value)
+					starter = value
+					callback(value)
+					
+					ActualColor.BackgroundColor3 = value
+					ActualColor.UIStroke.Color = value
+					Slider.UIStroke.Color = value
+					Wheel.ImageLabel.ImageColor3 = value
+				end
+
+				return setConfig;
+			end
+
+			return drawSections;
+		end
+
+		function drawGroup:CreateRightGroup()
+			local groupSize = 0
+
+			local function resize(value)
+				groupSize = groupSize + value
+			end
+
+			local Group = Instance.new("Frame")
+			local UICorner = Instance.new("UICorner")
+			local Frame = Instance.new("Frame")
+			local UIListLayout = Instance.new("UIListLayout")
+
+			Group.Name = "Group"
+			Group.Parent = RightDraw
+			Group.BackgroundColor3 = Color3.fromRGB(20, 20, 35)
+			Group.BorderSizePixel = 0
+			Group.Position = UDim2.new(-0.00178352382, 0, -0.000230239952, 0)
+			Group.Size = UDim2.new(0, 287, 0, 0)
+
+			UICorner.CornerRadius = UDim.new(0, 10)
+			UICorner.Parent = Group
+
+			Frame.Parent = Group
+			Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Frame.BackgroundTransparency = 1.000
+			Frame.BorderSizePixel = 0
+			Frame.Position = UDim2.new(0.024390243, 0, 0.0287958533, 0)
+			Frame.Size = UDim2.new(0, 271, 0, 192)
+
+			UIListLayout.Parent = Frame
+			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+			UIListLayout.Padding = UDim.new(0, 3)
+
+			spawn(function()
+				while true do
+					ts:Create(Group,TweenInfo.new(2),{Size = UDim2.new(0, 287, 0, groupSize)}):Play()
+					wait(1)
+				end
+			end)
+
+			local drawSections = {}
+
+			function drawSections:CreateButton(name,callback)
+
+				callback = callback or function() end
+
+				resize(29 + 4.7)
+
+				local DrawButton = Instance.new("TextButton")
+				local TextLabel = Instance.new("TextLabel")
+				local UICorner_2 = Instance.new("UICorner")
+
+				DrawButton.Name = "DrawButton"
+				DrawButton.Parent = Frame
+				DrawButton.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawButton.BorderSizePixel = 0
+				DrawButton.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawButton.Size = UDim2.new(0, 271, 0, 29)
+				DrawButton.Font = Enum.Font.SourceSans
+				DrawButton.Text = ""
+				DrawButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawButton.TextSize = 14.000
+
+				TextLabel.Parent = DrawButton
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+				TextLabel.Size = UDim2.new(0, 140, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICorner_2.CornerRadius = UDim.new(0, 5)
+				UICorner_2.Parent = DrawButton
+
+				local db = false
+
+				DrawButton.MouseButton1Click:Connect(function()
+					callback()
+				end)
+			end
+
+			function drawSections:CreateToggle(name,callback)
+				
+				local key = nil
+				local waitKey = false
+
+				callback = callback or function() end
+
+				resize(29 + 4.7)
+
+				local DrawToggle = Instance.new("TextButton")
+				local UICorner = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local Box = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke = Instance.new("UIStroke")
+				local ImageLabel = Instance.new("ImageLabel")
+
+				DrawToggle.Name = "DrawToggle"
+				DrawToggle.Parent = Frame
+				DrawToggle.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawToggle.BorderSizePixel = 0
+				DrawToggle.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawToggle.Size = UDim2.new(0, 271, 0, 29)
+				DrawToggle.Font = Enum.Font.SourceSans
+				DrawToggle.Text = ""
+				DrawToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawToggle.TextSize = 14.000
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawToggle
+
+				TextLabel.Parent = DrawToggle
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+				TextLabel.Size = UDim2.new(0, 140, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				Box.Name = "Box"
+				Box.Parent = DrawToggle
+				Box.BackgroundColor3 = Color3.fromRGB(57, 58, 81)
+				Box.BorderSizePixel = 0
+				Box.Position = UDim2.new(0.904999971, 0, 0.137999997, 0)
+				Box.Size = UDim2.new(0, 20, 0, 20)
+
+				UICorner_2.CornerRadius = UDim.new(0, 5)
+				UICorner_2.Parent = Box
+
+				UIStroke.Color = Color3.fromRGB(38, 39, 61)
+				UIStroke.Thickness = 1.500
+				UIStroke.Parent = Box
+
+				ImageLabel.Parent = Box
+				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageLabel.BackgroundTransparency = 1.000
+				ImageLabel.BorderSizePixel = 0
+				ImageLabel.Position = UDim2.new(0.100000001, 0, 0.100000061, 0)
+				ImageLabel.Size = UDim2.new(0, 15, 0, 15)
+				ImageLabel.Image = "rbxassetid://12543135185"
+				ImageLabel.ImageColor3 = Color3.fromRGB(169, 158, 213)
+				ImageLabel.ImageTransparency = 1.000
+				
+				local db = false
+				
+				uis.InputBegan:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.Keyboard then
+						if key ~= nil then
+							if input.KeyCode == Enum.KeyCode[key] then
+								if not db then
+									ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+								else
+									ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+								end
+								db = not db
+								callback(db)
+							end
+						end
+					end
+				end)
+
+				DrawToggle.MouseButton1Click:Connect(function()
+					if not db then
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+					else
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+					end
+					db = not db
+					callback(db)
+				end)
+				
+				local KeybindFrame = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+				local TextBox = Instance.new("TextBox")
+
+				KeybindFrame.Name = "KeybindFrame"
+				KeybindFrame.Parent = DrawToggle
+				KeybindFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 30)
+				KeybindFrame.BorderSizePixel = 0
+				KeybindFrame.Position = UDim2.new(0.745, 0,0.31, 0)
+				KeybindFrame.Size = UDim2.new(0, 37, 0, 15)
+
+				UICorner.CornerRadius = UDim.new(0, 4)
+				UICorner.Parent = KeybindFrame
+
+				TextBox.Parent = KeybindFrame
+				TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextBox.BackgroundTransparency = 1.000
+				TextBox.BorderSizePixel = 0
+				TextBox.Size = UDim2.new(0, 37, 0, 14)
+				TextBox.Font = Enum.Font.Gotham
+				TextBox.Text = ""
+				TextBox.TextColor3 = Color3.fromRGB(171, 185, 223)
+				TextBox.TextSize = 14.000
+
+				uis.InputBegan:Connect(function(input,chat)
+					if input.UserInputType == Enum.UserInputType.Keyboard then
+						if chat then
+
+							spawn(function()
+								wait(.2)
+
+								if waitKey then
+									key = uis:GetStringForKeyCode(input.KeyCode)
+								end
+							end)
+
+						end
+					end
+				end)
+
+				TextBox.Focused:Connect(function()
+					waitKey = true
+				end)
+
+				TextBox.FocusLost:Connect(function(enter)
+					if enter then
+						waitKey = false
+						TextBox.Text = tostring(key)
+					end
+				end)
+				
+				local setConfig = {}
+
+				function setConfig:loadCfg(value)
+					if not value then
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+					else
+						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+					end
+					db = value
+					callback(db)
+				end
+
+				return setConfig
+			end
+
+			function drawSections:CreateDropdown(name,varbs,callback)
+
+				local dropdownSize = 0
+
+				callback = callback or function() end
+				varbs = varbs or function() end
+
+				resize(29 + 4.7)
+
+				local DrawDropdown = Instance.new("TextButton")
+				local UICorner = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local ImageLabel = Instance.new("ImageLabel")
+				local Dropdown = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke = Instance.new("UIStroke")
+				local UiListlayout = Instance.new("UIListLayout")
+				local UiPadding = Instance.new("UIPadding")
+
+				DrawDropdown.Name = "DrawDropdown"
+				DrawDropdown.Parent = Frame
+				DrawDropdown.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawDropdown.BorderSizePixel = 0
+				DrawDropdown.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawDropdown.Size = UDim2.new(0, 271, 0, 29)
+				DrawDropdown.ZIndex = 2
+				DrawDropdown.Font = Enum.Font.SourceSans
+				DrawDropdown.Text = ""
+				DrawDropdown.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawDropdown.TextSize = 14.000
+				DrawDropdown.ZIndex = 3
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawDropdown
+
+				TextLabel.Parent = DrawDropdown
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+				TextLabel.Size = UDim2.new(0, 140, 0, 14)
+				TextLabel.ZIndex = 2
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+				TextLabel.ZIndex = 3
+
+				ImageLabel.Parent = DrawDropdown
+				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageLabel.BackgroundTransparency = 1.000
+				ImageLabel.BorderSizePixel = 0
+				ImageLabel.Position = UDim2.new(0.915, 0, 0.272, 0)
+				ImageLabel.Rotation = -180.000
+				ImageLabel.Size = UDim2.new(0, 13, 0, 13)
+				ImageLabel.ZIndex = 2
+				ImageLabel.Image = "rbxassetid://12544120018"
+				ImageLabel.ImageColor3 = Color3.fromRGB(169, 158, 213)
+				ImageLabel.ZIndex = 3
+
+				Dropdown.Name = "Dropdown"
+				Dropdown.Parent = DrawDropdown
+				Dropdown.BackgroundColor3 = Color3.fromRGB(26, 26, 45)
+				Dropdown.BorderSizePixel = 0
+				Dropdown.Position = UDim2.new(0.0147601487, 0, 0.758620679, 0)
+				Dropdown.ClipsDescendants = true
+				Dropdown.ZIndex = 2
+
+				Dropdown.Size = UDim2.new(0, 263, 0, 0)
+
+				UICorner_2.Parent = Dropdown
+
+				UIStroke.Color = Color3.fromRGB(29, 29, 49)
+				UIStroke.Thickness = 2.000
+				UIStroke.Parent = Dropdown
+
+				UiListlayout.Parent = Dropdown
+				UiListlayout.SortOrder = Enum.SortOrder.LayoutOrder
+				UiListlayout.Padding = UDim.new(0, -27)
+				UiListlayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+				UiPadding.Parent = Dropdown
+				UiPadding.PaddingTop = UDim.new(0, 10)
+
+				local db = false
+
+				DrawDropdown.MouseButton1Click:Connect(function()
+					if not db then
+						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = 0}):Play()
+						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, dropdownSize)}):Play()
+
+						Dropdown.ZIndex += 2
+						ImageLabel.ZIndex += 2
+						TextLabel.ZIndex += 2
+						DrawDropdown.ZIndex += 2
+					else
+						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
+						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
+
+						Dropdown.ZIndex -= 2
+						ImageLabel.ZIndex -= 2
+						TextLabel.ZIndex -= 2
+						DrawDropdown.ZIndex -= 2
+					end
+
+					db = not db
+				end)
+
+				local ss = -27
+
+				spawn(function()
+					while task.wait() do
+						if not db then
+							if ss > -27 then
+								ss -= 2
+								UiListlayout.Padding = UDim.new(0,tonumber(ss))
+							end
+						else
+							if ss < 2 then
+								ss += 1
+								UiListlayout.Padding = UDim.new(0,tonumber(ss))
+							end
+						end
+					end
+				end)
+
+				for i,v in pairs(varbs) do
+					dropdownSize = dropdownSize + (27 + 5)
+
+					local TextButton = Instance.new("TextButton")
+					local TextLabel = Instance.new("TextLabel")
+					local UICorner = Instance.new("UICorner")
+
+					TextButton.Parent = Dropdown
+					TextButton.BackgroundColor3 = Color3.fromRGB(35, 35, 57)
+					TextButton.BorderSizePixel = 0
+					TextButton.Position = UDim2.new(0.11, 0, 0.067, 0)
+					TextButton.Size = UDim2.new(0, 256, 0, 27)
+					TextButton.Font = Enum.Font.SourceSans
+					TextButton.Text = ""
+					TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+					TextButton.TextSize = 14.000
+					TextButton.ZIndex = 2
+
+					TextLabel.Parent = TextButton
+					TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					TextLabel.BackgroundTransparency = 1.000
+					TextLabel.BorderSizePixel = 0
+					TextLabel.Position = UDim2.new(0.0304054059, 0, 0.241379321, 0)
+					TextLabel.Size = UDim2.new(0, 140, 0, 14)
+					TextLabel.ZIndex = 2
+					TextLabel.Font = Enum.Font.Gotham
+					TextLabel.Text = tostring(v)
+					TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+					TextLabel.TextScaled = true
+					TextLabel.TextSize = 14.000
+					TextLabel.TextWrapped = true
+					TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+					TextLabel.ZIndex = 2
+
+					UICorner.CornerRadius = UDim.new(0, 5)
+					UICorner.Parent = TextButton
+
+					spawn(function()
+						while wait() do
+							if not db then
+								if TextButton.Transparency ~= 1 then
+									ts:Create(TextButton,TweenInfo.new(.2),{Transparency = 1}):Play()
+									ts:Create(TextLabel,TweenInfo.new(.2),{TextTransparency = 1}):Play()
+									TextButton.ZIndex = 2
+									TextLabel.ZIndex = 2
+								end
+							else
+								if TextButton.Transparency ~= 0 then
+									ts:Create(TextButton,TweenInfo.new(.5),{Transparency = 0}):Play()
+									ts:Create(TextLabel,TweenInfo.new(.5),{TextTransparency = 0}):Play()
+									TextButton.ZIndex = 4
+									TextLabel.ZIndex = 4
+								end
+							end
+						end
+					end)
+
+					TextButton.MouseButton1Click:Connect(function()
+						callback(tostring(TextLabel.Text))
+
+						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
+						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
+
+						Dropdown.ZIndex -= 2
+						ImageLabel.ZIndex -= 2
+						TextLabel.ZIndex -= 2
+						DrawDropdown.ZIndex -= 2
+
+						db = false
+					end)
+				end
+				
+				local setConfig = {}
+
+				function setConfig:loadCfg(value)
+					db = value
+					callback(db)
+				end
+
+				return setConfig
+			end
+
+			function drawSections:CreateSlider(name,min,max,callback)
+				resize(29 + 4.7)
+
+				callback = callback or function() end
+
+				min = min or 0
+				max = max or 10
+
+				local sliderVal
+
+				local DrawSlider = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local Box = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local BoxButton = Instance.new("TextButton")
+				local Frame45 = Instance.new("Frame")
+				local Circle = Instance.new("Frame")
+				local UICorner_3 = Instance.new("UICorner")
+				local ValueLabel = Instance.new("TextLabel")
+
+				DrawSlider.Name = "DrawSlider"
+				DrawSlider.Parent = Frame
+				DrawSlider.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawSlider.BorderSizePixel = 0
+				DrawSlider.Position = UDim2.new(0, 0, 0.166666672, 0)
+				DrawSlider.Size = UDim2.new(0, 271, 0, 29)
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawSlider
+
+				TextLabel.Parent = DrawSlider
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054171, 0, 0.137931019, 0)
+				TextLabel.Size = UDim2.new(0, 208, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				Box.Name = "Box"
+				Box.Parent = DrawSlider
+				Box.BackgroundColor3 = Color3.fromRGB(20, 20, 34)
+				Box.BorderSizePixel = 0
+				Box.Position = UDim2.new(0.0299999993, 0, 0.699999988, 0)
+				Box.Size = UDim2.new(0, 256, 0, 4)
+
+				UICorner_2.CornerRadius = UDim.new(1, 0)
+				UICorner_2.Parent = Box
+
+				BoxButton.Name = "BoxButton"
+				BoxButton.Parent = Box
+				BoxButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				BoxButton.BackgroundTransparency = 1.000
+				BoxButton.BorderSizePixel = 0
+				BoxButton.Position = UDim2.new(0, 0, -0.75, 0)
+				BoxButton.Size = UDim2.new(0, 256, 0, 11)
+				BoxButton.Font = Enum.Font.SourceSans
+				BoxButton.Text = ""
+				BoxButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+				BoxButton.TextSize = 14.000
+
+				Circle.Name = "Circle"
+				Circle.Parent = Box
+				Circle.BackgroundColor3 = Color3.fromRGB(189, 187, 255)
+				Circle.BorderSizePixel = 0
+				Circle.Position = UDim2.new(0.4765625, 0, -1, 0)
+				Circle.Size = UDim2.new(0, 11, 0, 11)
+				Circle.ZIndex = 2
+
+				UICorner_3.CornerRadius = UDim.new(1, 0)
+				UICorner_3.Parent = Circle
+
+				Frame45.Parent = BoxButton
+				Frame45.BackgroundColor3 = Color3.fromRGB(71, 71, 118)
+				Frame45.BorderSizePixel = 0
+				Frame45.Position = UDim2.new(0, 0, 0.272727281, 0)
+				Frame45.Size = UDim2.new(0, 122, 0, 4)
+
+				ValueLabel.Name = "ValueLabel"
+				ValueLabel.Parent = DrawSlider
+				ValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ValueLabel.BackgroundTransparency = 1.000
+				ValueLabel.BorderSizePixel = 0
+				ValueLabel.Position = UDim2.new(0.797859669, 0, 0.241379306, 0)
+				ValueLabel.Size = UDim2.new(0, 48, 0, 11)
+				ValueLabel.Font = Enum.Font.Gotham
+				ValueLabel.Text = tostring(min + max)
+				ValueLabel.TextColor3 = Color3.fromRGB(148, 148, 148)
+				ValueLabel.TextScaled = true
+				ValueLabel.TextSize = 14.000
+				ValueLabel.TextWrapped = true
+				ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+				BoxButton.MouseButton1Down:Connect(function()
+					sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min)) or 0
+					pcall(function()
+						callback(sliderVal)
+					end)
+					Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+					Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X-3, 0, 256), -1, 0)
+					moveconnection = mouse.Move:Connect(function()
+						sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min))
+
+						ValueLabel.Text = sliderVal
+
+						pcall(function()
+							callback(sliderVal)
+						end)
+
+						Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+						Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X-3, 0, 256), -1, 0)
+					end)
+					releaseconnection = uis.InputEnded:Connect(function(Mouse)
+						if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+							sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min))
+
+							ValueLabel.Text = sliderVal
+
+							pcall(function()
+								callback(sliderVal)
+							end)
+
+							Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+							Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X -3, 0, 256), -1, 0)
+
+							moveconnection:Disconnect()
+							releaseconnection:Disconnect()
+						end
+					end)
+				end)
+				
+				local setConfig = {}
+
+				function setConfig:loadCfg(value)
+					sliderVal = value
+					ValueLabel.Text = sliderVal
+					Frame45.Size = UDim2.new(0, math.clamp(value - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+					callback(sliderVal)
+				end
+
+				return setConfig
+			end
+			
+			function drawSections:CreateColorPicker(name,starter,callback)
+				resize(29 + 4.7)
+				callback = callback or function() end
+
+				starter = starter or {255,255,255}
+
+				local DrawColorpicker = Instance.new("TextButton")
+				local TextLabel = Instance.new("TextLabel")
+				local UICorner = Instance.new("UICorner")
+				local ActualColor = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke = Instance.new("UIStroke")
+				local ColorChanger = Instance.new("Frame")
+				local UICorner_3 = Instance.new("UICorner")
+				local UIStroke_2 = Instance.new("UIStroke")
+				local Wheel = Instance.new("ImageButton")
+				local Ring = Instance.new("ImageLabel")
+				local Slider = Instance.new("ImageButton")
+				local Slide = Instance.new("Frame")
+				local UICorner_4 = Instance.new("UICorner")
+				local UIStroke_3 = Instance.new("UIStroke")
+				local UIStroke_4 = Instance.new("UIStroke")
+				local UICorner_5 = Instance.new("UICorner")
+				local ImageLabel = Instance.new("ImageLabel")
+
+				DrawColorpicker.Name = "DrawColorpicker"
+				DrawColorpicker.Parent = Frame
+				DrawColorpicker.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+				DrawColorpicker.BorderSizePixel = 0
+				DrawColorpicker.Position = UDim2.new(0.000234730542, 0, 0.020844385, 0)
+				DrawColorpicker.Size = UDim2.new(0, 271, 0, 29)
+				DrawColorpicker.AutoButtonColor = false
+				DrawColorpicker.Font = Enum.Font.SourceSans
+				DrawColorpicker.Text = ""
+				DrawColorpicker.TextColor3 = Color3.fromRGB(0, 0, 0)
+				DrawColorpicker.TextSize = 14.000
+
+				TextLabel.Parent = DrawColorpicker
+				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.0304054171, 0, 0.241379306, 0)
+				TextLabel.Size = UDim2.new(0, 208, 0, 14)
+				TextLabel.Font = Enum.Font.Gotham
+				TextLabel.Text = name
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextScaled = true
+				TextLabel.TextSize = 14.000
+				TextLabel.TextWrapped = true
+				TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICorner.CornerRadius = UDim.new(0, 5)
+				UICorner.Parent = DrawColorpicker
+
+				ActualColor.Name = "ActualColor"
+				ActualColor.Parent = DrawColorpicker
+				ActualColor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ActualColor.BorderSizePixel = 0
+				ActualColor.Position = UDim2.new(0.837638378, 0, 0.237930819, 0)
+				ActualColor.Size = UDim2.new(0, 37, 0, 15)
+
+				UICorner_2.CornerRadius = UDim.new(0, 5)
+				UICorner_2.Parent = ActualColor
+
+				UIStroke.Color = Color3.fromRGB(214, 214, 214)
+				UIStroke.Thickness = 1.500
+				UIStroke.Transparency = 0.500
+				UIStroke.Parent = ActualColor
+
+				ColorChanger.Name = "ColorChanger"
+				ColorChanger.Parent = DrawColorpicker
+				ColorChanger.BackgroundColor3 = Color3.fromRGB(31, 31, 52)
+				ColorChanger.BorderSizePixel = 0
+				ColorChanger.Position = UDim2.new(0.00369003601, 0, 1.10344827, 0)
+				ColorChanger.Size = UDim2.new(0, 136, 0, 119)
+				ColorChanger.Visible = false
+
+				UICorner_3.Parent = ColorChanger
+
+				UIStroke_2.Color = Color3.fromRGB(45, 45, 76)
+				UIStroke_2.Thickness = 1.500
+				UIStroke_2.Parent = ColorChanger
+
+				Wheel.Name = "Wheel"
+				Wheel.Parent = ColorChanger
+				Wheel.Active = false
+				Wheel.BackgroundColor3 = Color3.fromRGB(248, 248, 248)
+				Wheel.BackgroundTransparency = 1.000
+				Wheel.Position = UDim2.new(0, 0, 0.0300000608, 0)
+				Wheel.Selectable = false
+				Wheel.Size = UDim2.new(0.95195806, 0, 0.96999985, 0)
+				Wheel.SizeConstraint = Enum.SizeConstraint.RelativeYY
+				Wheel.AutoButtonColor = false
+				Wheel.Image = "rbxassetid://2849458409"
+
+				Ring.Name = "Ring"
+				Ring.Parent = Wheel
+				Ring.AnchorPoint = Vector2.new(0.5, 0.5)
+				Ring.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Ring.BackgroundTransparency = 1.000
+				Ring.BorderSizePixel = 0
+				Ring.Position = UDim2.new(0.5, 0, 0.5, 0)
+				Ring.Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
+				Ring.SizeConstraint = Enum.SizeConstraint.RelativeYY
+				Ring.Image = "rbxassetid://244221613"
+				Ring.ImageColor3 = Color3.fromRGB(0, 0, 0)
+
+				Slider.Name = "Slider"
+				Slider.Parent = Wheel
+				Slider.Active = false
+				Slider.BackgroundColor3 = Color3.fromRGB(248, 248, 248)
+				Slider.BorderSizePixel = 0
+				Slider.Position = UDim2.new(1.04873955, 0, 0, 0)
+				Slider.Selectable = false
+				Slider.Size = UDim2.new(0.150000006, 0, 1, 0)
+				Slider.SizeConstraint = Enum.SizeConstraint.RelativeYY
+				Slider.AutoButtonColor = false
+				Slider.Image = "rbxassetid://156579757"
+
+				Slide.Name = "Slide"
+				Slide.Parent = Slider
+				Slide.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+				Slide.BackgroundTransparency = 1.000
+				Slide.BorderSizePixel = 0
+				Slide.Position = UDim2.new(0.019060161, 0, -0.00866326131, 0)
+				Slide.Size = UDim2.new(0.980941355, 0, 0.146818325, 0)
+
+				UICorner_4.Parent = Slide
+
+				UIStroke_3.Color = Color3.fromRGB(53, 53, 53)
+				UIStroke_3.Thickness = 2.000
+				UIStroke_3.Parent = Slide
+
+				UIStroke_4.Color = Color3.fromRGB(159, 159, 159)
+				UIStroke_4.Thickness = 1.500
+				UIStroke_4.Parent = Slider
+
+				UICorner_5.Parent = Slider
+
+				ImageLabel.Parent = Wheel
+				ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageLabel.BackgroundTransparency = 1.000
+				ImageLabel.BorderSizePixel = 0
+				ImageLabel.Position = UDim2.new(-0.388407767, 0, -0.389846712, 0)
+				ImageLabel.Size = UDim2.new(0, 200, 0, 200)
+				ImageLabel.Image = "http://www.roblox.com/asset/?id=10822615828"
+				ImageLabel.ImageTransparency = 0.500
+
+				local db = false
+
+				DrawColorpicker.MouseButton1Click:Connect(function()
+					if not db then
+						ColorChanger.Size = UDim2.new(0,0,0,0)
+						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = 0, 136, 0, 119}):Play()
+						ColorChanger.Visible = true
+					else
+						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = 0, 0, 0, 0}):Play()
+						spawn(function()
+							wait(.5)
+							if db then
+								ColorChanger.Visible = false
+							end
+						end)
+					end
+
+					db = not db
+				end)
+
+				----------------------------
+
+				local ceil,clamp,atan2,pi = math.ceil,math.clamp,math.atan2,math.pi
+				local tostr,sub = tostring,string.sub
+				local fromHSV = Color3.fromHSV
+				local v2,udim2 = Vector2.new,UDim2.new
+
+
+				local WheelDown	= false
+				local SlideDown	= false
+
+				local function toPolar(v)
+					return atan2(v.y, v.x), v.magnitude;
+				end
+
+				local function radToDeg(x)
+					return ((x + pi) / (2 * pi)) * 360;
+				end
+
+				local hue, saturation, value = 0, 0, 1;
+
+				local function update()
+					local c = fromHSV(hue, saturation, value);
+
+					ActualColor.BackgroundColor3 = c
+					ActualColor.UIStroke.Color = c
+					Slider.UIStroke.Color = c
+					Wheel.ImageLabel.ImageColor3 = c
+				end
+
+				local function UpdateSlide(iX,iY)	
+					local rY = iY - Slider.AbsolutePosition.y;
+					local cY = clamp(rY, 0, Slider.AbsoluteSize.y - Slide.AbsoluteSize.y);
+					Slide.Position = udim2(0, 0, 0, cY);
+
+					value = 1 - (cY / (Slider.AbsoluteSize.y - Slide.AbsoluteSize.y));
+					Slide.BackgroundColor3 = fromHSV(0, 0, 1-value);
+
+					update();
+				end
+				local function UpdateRing(iX,iY)
+					local r = Wheel.AbsoluteSize.x/2
+					local d = v2(iX, iY) - Wheel.AbsolutePosition - Wheel.AbsoluteSize/2;
+
+					if (d:Dot(d) > r*r) then
+						d = d.unit * r;
+					end
+
+					Ring.Position = udim2(0.5, d.x, 0.5, d.y);
+
+					local phi, len = toPolar(d * v2(1, -1));
+					hue, saturation = radToDeg(phi)/360, len / r;
+					Slider.BackgroundColor3 = fromHSV(hue, saturation, 1);
+
+					update();
+				end
+
+				Wheel.MouseButton1Down:Connect(function()
+					WheelDown = true
+					UpdateRing(mouse.X,mouse.Y)
+				end)
+				Slider.MouseButton1Down:Connect(function()
+					SlideDown = true
+					UpdateSlide(mouse.X,mouse.Y)
+				end)
+
+
+				uis.InputEnded:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						WheelDown = false
+						SlideDown = false
+					end
+				end)
+
+				Wheel.MouseMoved:Connect(function()
+					if WheelDown then
+						UpdateRing(mouse.X,mouse.Y)
+					end
+				end)
+				Slider.MouseMoved:Connect(function()
+					if SlideDown then
+						UpdateSlide(mouse.X,mouse.Y)
+					end
+				end)
+				
+				local setConfig = {}
+
+				function setConfig:loadCfg(value)
+					starter = value
+					callback(value)
+
+					ActualColor.BackgroundColor3 = value
+					ActualColor.UIStroke.Color = value
+					Slider.UIStroke.Color = value
+					Wheel.ImageLabel.ImageColor3 = value
+				end
+
+				return setConfig;
+			end
+
+			return drawSections;
+		end
+		
+		return drawGroup;
+	end
+	
+	return drawTab;
+end
+
+return library;

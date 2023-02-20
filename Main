@@ -549,13 +549,13 @@ function library:CreateContainer()
 				local setConfig = {}
 				
 				function setConfig:loadCfg(value)
+					db = value
+					callback(value)
 					if not value then
 						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
 					else
 						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
 					end
-					db = not value
-					callback(db)
 				end
 				
 				return setConfig

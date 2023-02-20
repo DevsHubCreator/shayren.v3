@@ -2,6 +2,20 @@ if not game:IsLoaded() then
 	repeat task.wait() until game:IsLoaded()
 end
 
+local Name = "shayrenConfig.txt"
+
+local DefaultSettings = {}
+
+local Settings
+
+if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
+
+Settings = game:service'HttpService':JSONDecode(readfile(Name))
+
+local function Save()
+	writefile(Name,game:service'HttpService':JSONEncode(Settings))
+end
+
 local plr = game:GetService("Players").LocalPlayer
 local ts = game:GetService("TweenService")
 local mouse = plr:GetMouse()

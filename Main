@@ -1838,10 +1838,10 @@ function library:CreateContainer()
 				DrawColorpicker.MouseButton1Click:Connect(function()
 					if not db then
 						ColorChanger.Size = UDim2.new(0,0,0,0)
-						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = 0, 136, 0, 119}):Play()
+						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 136, 0, 119)}):Play()
 						ColorChanger.Visible = true
 					else
-						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = 0, 0, 0, 0}):Play()
+						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
 						spawn(function()
 							wait(.5)
 							if db then

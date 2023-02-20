@@ -2,20 +2,6 @@ if not game:IsLoaded() then
 	repeat task.wait() until game:IsLoaded()
 end
 
-local Name = "shayrenConfig.txt"
-
-local DefaultSettings = {}
-
-local Settings
-
-if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
-
-Settings = game:service'HttpService':JSONDecode(readfile(Name))
-
-local function Save()
-	writefile(Name,game:service'HttpService':JSONEncode(Settings))
-end
-
 local plr = game:GetService("Players").LocalPlayer
 local ts = game:GetService("TweenService")
 local mouse = plr:GetMouse()
@@ -413,8 +399,6 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
-				DefaultSettings[name] = false
-				
 				local key = nil
 				local waitKey = false
 
@@ -495,8 +479,6 @@ function library:CreateContainer()
 								end
 								db = not db
 								callback(db)
-								
-								Settings[name] = db
 							end
 						end
 					end
@@ -510,8 +492,6 @@ function library:CreateContainer()
 					end
 					db = not db
 					callback(db)
-					
-					Settings[name] = db
 				end)
 
 				local KeybindFrame = Instance.new("Frame")
@@ -587,8 +567,6 @@ function library:CreateContainer()
 
 				callback = callback or function() end
 				varbs = varbs or function() end
-				
-				DefaultSettings[name] = varbs[1]
 
 				resize(29 + 4.7)
 
@@ -769,8 +747,6 @@ function library:CreateContainer()
 
 					TextButton.MouseButton1Click:Connect(function()
 						callback(tostring(TextLabel.Text))
-						
-						DefaultSettings[name] = tostring(TextLabel.Text)
 
 						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
 						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
@@ -801,8 +777,6 @@ function library:CreateContainer()
 
 				min = min or 0
 				max = max or 10
-				
-				DefaultSettings[name] = (max-min)
 
 				local sliderVal
 
@@ -899,7 +873,6 @@ function library:CreateContainer()
 					sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min)) or 0
 					pcall(function()
 						callback(sliderVal)
-						Settings[name] = sliderVal
 					end)
 					Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
 					Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), -1, 0)
@@ -910,7 +883,6 @@ function library:CreateContainer()
 
 						pcall(function()
 							callback(sliderVal)
-							Settings[name] = sliderVal
 						end)
 
 						Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
@@ -924,7 +896,6 @@ function library:CreateContainer()
 
 							pcall(function()
 								callback(sliderVal)
-								Settings[name] = sliderVal
 							end)
 
 							Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
@@ -953,8 +924,6 @@ function library:CreateContainer()
 				callback = callback or function() end
 				
 				starter = starter or {255,255,255}
-				
-				DefaultSettings[name] = starter
 				
 				local DrawColorpicker = Instance.new("TextButton")
 				local TextLabel = Instance.new("TextLabel")
@@ -1168,12 +1137,6 @@ function library:CreateContainer()
 						sub(tostr(ceil(clamp(c.g*255,0,255))),1,3)..", "..
 						sub(tostr(ceil(clamp(c.b*255,0,255))),1,3)
 					)
-					
-					Settings[name] = {
-						sub(tostr(ceil(clamp(c.r*255,0,255))),1,3)..", "..
-						sub(tostr(ceil(clamp(c.g*255,0,255))),1,3)..", "..
-						sub(tostr(ceil(clamp(c.b*255,0,255))),1,3)
-					}
 				end
 				
 				local function UpdateSlide(iX,iY)	
@@ -1342,8 +1305,6 @@ function library:CreateContainer()
 				local waitKey = false
 
 				callback = callback or function() end
-				
-				DefaultSettings[name] = false
 
 				resize(29 + 4.7)
 
@@ -1420,8 +1381,6 @@ function library:CreateContainer()
 								end
 								db = not db
 								callback(db)
-								
-								Settings[name] = db
 							end
 						end
 					end
@@ -1435,8 +1394,6 @@ function library:CreateContainer()
 					end
 					db = not db
 					callback(db)
-					
-					Settings[name] = db
 				end)
 				
 				local KeybindFrame = Instance.new("Frame")
@@ -1500,8 +1457,6 @@ function library:CreateContainer()
 					end
 					db = not value
 					callback(db)
-					
-					Settings[name] = false
 				end
 
 				return setConfig
@@ -1513,8 +1468,6 @@ function library:CreateContainer()
 
 				callback = callback or function() end
 				varbs = varbs or function() end
-				
-				DefaultSettings[name] = varbs[1]
 
 				resize(29 + 4.7)
 
@@ -1697,8 +1650,6 @@ function library:CreateContainer()
 
 					TextButton.MouseButton1Click:Connect(function()
 						callback(tostring(TextLabel.Text))
-						
-						Settings[name] = tostring(TextLabel.Text)
 
 						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
 						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
@@ -1729,8 +1680,6 @@ function library:CreateContainer()
 
 				min = min or 0
 				max = max or 10
-				
-				DefaultSettings[name] = (max-min)
 
 				local sliderVal
 
@@ -1827,7 +1776,6 @@ function library:CreateContainer()
 					sliderVal = math.floor((((tonumber(max) - tonumber(min)) / 256) * Frame45.AbsoluteSize.X) + tonumber(min)) or 0
 					pcall(function()
 						callback(sliderVal)
-						Settings[name] = sliderVal
 					end)
 					Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
 					Circle.Position = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X-3, 0, 256), -1, 0)
@@ -1838,7 +1786,6 @@ function library:CreateContainer()
 
 						pcall(function()
 							callback(sliderVal)
-							Settings[name] = sliderVal
 						end)
 
 						Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
@@ -1852,7 +1799,6 @@ function library:CreateContainer()
 
 							pcall(function()
 								callback(sliderVal)
-								Settings[name] = sliderVal
 							end)
 
 							Frame45.Size = UDim2.new(0, math.clamp(mouse.X - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
@@ -1881,8 +1827,6 @@ function library:CreateContainer()
 				callback = callback or function() end
 
 				starter = starter or {255,255,255}
-				
-				DefaultSettings[name] = starter
 
 				local DrawColorpicker = Instance.new("TextButton")
 				local TextLabel = Instance.new("TextLabel")
@@ -2080,12 +2024,6 @@ function library:CreateContainer()
 						sub(tostr(ceil(clamp(c.g*255,0,255))),1,3)..", "..
 						sub(tostr(ceil(clamp(c.b*255,0,255))),1,3)
 					)
-					
-					Settings[name] = {
-						sub(tostr(ceil(clamp(c.r*255,0,255))),1,3)..", "..
-						sub(tostr(ceil(clamp(c.g*255,0,255))),1,3)..", "..
-						sub(tostr(ceil(clamp(c.b*255,0,255))),1,3)
-					}
 				end
 
 				local function UpdateSlide(iX,iY)	

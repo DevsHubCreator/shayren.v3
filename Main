@@ -410,8 +410,8 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
-				table.insert(Settings,name)
-				Settings[name] = false
+				table.insert(Settings,tostring(name))
+				Settings[tostring(name)] = false
 				
 				local key = nil
 				local waitKey = false
@@ -2120,10 +2120,10 @@ function library:CreateContainer()
 
 		local cfgTab = drawTab:CreateTab("Config")
 		local cfgSection = cfgTab:CreateLeftGroup()
-		cfgSection:CreateToggle("Save",function(x)
+		cfgSection:CreateButton("Save",function(x)
 			Save()
 		end)
-		cfgSection:CreateToggle("Load",function(x)
+		cfgSection:CreateButton("Load",function(x)
 			
 		end)
 	end

@@ -9,7 +9,18 @@ local uis = game:GetService("UserInputService")
 
 local library = {}
 
+local Name = "shayrenConfig.txt"
+
+local Settings
+
+local function Save()
+	if (writefile) then
+		writefile(Name,game:GetService('HttpService'):JSONEncode(Settings))
+	end
+end
+
 function library:CreateContainer()
+	
 	local shayrengs = Instance.new("ScreenGui")
 	local Holder = Instance.new("Frame")
 	local Container = Instance.new("Frame")
@@ -398,6 +409,8 @@ function library:CreateContainer()
 			end
 
 			function drawSections:CreateToggle(name,callback)
+				
+				Settings[name] = false
 				
 				local key = nil
 				local waitKey = false
@@ -2100,6 +2113,18 @@ function library:CreateContainer()
 		end
 		
 		return drawGroup;
+	end
+	
+	function drawTab:CreateConfig()
+
+		local cfgTab = drawTab:CreateTab("Config")
+		local cfgSection = cfgTab:CreateLeftGroup()
+		cfgSection:CreateToggle("Save",function(x)
+			Save()
+		end)
+		cfgSection:CreateToggle("Load",function(x)
+			
+		end)
 	end
 	
 	return drawTab;

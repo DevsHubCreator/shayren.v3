@@ -11,7 +11,7 @@ local library = {}
 
 local Name = "shayrenConfig.txt"
 
-local Settings
+local Settings = {}
 
 local function Save()
 	if (writefile) then
@@ -410,6 +410,7 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
+				table.insert(Settings,name)
 				Settings[name] = false
 				
 				local key = nil

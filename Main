@@ -13,7 +13,7 @@ function library:CreateContainer()
 	
 	library.flags = {}
 	
-	local Name = "shayrenConfig.json"
+	local Name = "shayrenConfig.txt"
 	
 	getgenv().loadingCfg = false
 
@@ -521,9 +521,8 @@ function library:CreateContainer()
 						else
 							ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
 						end
-						
-						db = library.flags[tostring(name)]
-						callback(db)
+
+						callback(library.flags[tostring(name)])
 					end
 				end)
 
@@ -2121,7 +2120,7 @@ function library:CreateContainer()
 			Save()
 		end)
 		cfgSection:CreateButton("Load",function(x)
-			library.flags = game:GetService('HttpService'):JSONEncode(readfile(Name))
+			library.flags = game:GetService('HttpService'):JSONEncode(readfile("shayrenConfig.txt"))
 			
 			spawn(function()
 				getgenv().loadingCfg = true
@@ -2174,5 +2173,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-45
+
 ]]

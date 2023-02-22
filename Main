@@ -9,17 +9,19 @@ local uis = game:GetService("UserInputService")
 
 local library = {}
 
-local Name = "shayrenConfig.txt"
-
-local Settings = {}
-
-local function Save()
-	if (writefile) then
-		writefile(Name,game:GetService('HttpService'):JSONEncode(Settings))
-	end
-end
-
 function library:CreateContainer()
+	
+	library.flags = {}
+	
+	local Name = "shayrenConfig.json"
+
+	local Settings = {}
+
+	local function Save()
+		if (writefile) then
+			writefile(Name,game:GetService('HttpService'):JSONEncode(library.flags))
+		end
+	end
 	
 	local shayrengs = Instance.new("ScreenGui")
 	local Holder = Instance.new("Frame")
@@ -410,8 +412,7 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
-				table.insert(Settings,{tostring(name), false})
-				local getSetting = Settings[tostring(name)]
+				library.flags[tostring(name)] = false
 				
 				local key = nil
 				local waitKey = false
@@ -494,8 +495,7 @@ function library:CreateContainer()
 								db = not db
 								callback(db)
 								
-								getSetting = db
-								print(table.unpack(Settings))
+								library.flags[tostring(name)] = db
 							end
 						end
 					end
@@ -510,8 +510,7 @@ function library:CreateContainer()
 					db = not db
 					callback(db)
 					
-					getSetting = db
-					print(table.unpack(Settings))
+					library.flags[tostring(name)] = db
 				end)
 
 				local KeybindFrame = Instance.new("Frame")

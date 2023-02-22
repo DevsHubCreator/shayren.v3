@@ -412,7 +412,7 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
-				library.flags[tostring(name)] = false
+				local flag = library.flags[tostring(name)] = false
 				
 				local key = nil
 				local waitKey = false
@@ -495,7 +495,7 @@ function library:CreateContainer()
 								db = not db
 								callback(db)
 								
-								library.flags[tostring(name)] = db
+								flag = db
 							end
 						end
 					end
@@ -511,7 +511,7 @@ function library:CreateContainer()
 					db = not db
 					callback(db)
 					
-					library.flags[tostring(name)] = db
+					flag = db
 				end)
 				
 				spawn(function()
@@ -522,7 +522,7 @@ function library:CreateContainer()
 							ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
 						end
 						
-						db = library.flags[tostring(name)]
+						db = flag
 						callback(db)
 					end
 				end)
@@ -2125,7 +2125,7 @@ function library:CreateContainer()
 			
 			spawn(function()
 				getgenv().loadingCfg = true
-				wait()
+				wait(.1)
 				getgenv().loadingCfg = false
 			end)
 		end)

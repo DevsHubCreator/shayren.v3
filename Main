@@ -411,9 +411,6 @@ function library:CreateContainer()
 			function drawSections:CreateToggle(name,callback)
 				
 				table.insert(Settings,{tostring(name), false})
-				for i,v in pairs(Settings) do
-					print(i,v)
-				end
 				local getSetting = Settings[tostring(name)]
 				
 				local key = nil
@@ -498,6 +495,7 @@ function library:CreateContainer()
 								callback(db)
 								
 								getSetting = db
+								print(table.unpack(Settings))
 							end
 						end
 					end
@@ -513,6 +511,7 @@ function library:CreateContainer()
 					callback(db)
 					
 					getSetting = db
+					print(table.unpack(Settings))
 				end)
 
 				local KeybindFrame = Instance.new("Frame")
@@ -2178,5 +2177,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-1
+
 ]]

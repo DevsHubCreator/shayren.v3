@@ -2121,8 +2121,10 @@ function library:CreateContainer()
 			Save()
 		end)
 		cfgSection:CreateButton("Load",function(x)
-			for i,v in pairs(game:GetService('HttpService'):JSONEncode(readfile(Name))) do
-				library.flags[i] = v 
+			for i,v in next,game:GetService('HttpService'):JSONEncode(readfile(Name)) do
+				if library.flags[i] then
+					library.flags[i] = v 
+				end
 			end
 			
 			spawn(function()
@@ -2176,5 +2178,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-
+423
 ]]

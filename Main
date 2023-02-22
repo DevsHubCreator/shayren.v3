@@ -412,7 +412,8 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
-				local flag = library.flags[tostring(name)] = false
+				local flag = library.flags[tostring(name)]
+				flag = false
 				
 				local key = nil
 				local waitKey = false
@@ -2174,5 +2175,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-5
+
 ]]

@@ -14,8 +14,8 @@ function library:CreateContainer()
 	library.flags = {}
 	
 	local Name = "shayrenConfig.json"
-
-	local Settings = {}
+	
+	getgenv().loadingCfg = false
 
 	local function Save()
 		if (writefile) then
@@ -507,10 +507,24 @@ function library:CreateContainer()
 					else
 						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
 					end
+					
 					db = not db
 					callback(db)
 					
 					library.flags[tostring(name)] = db
+				end)
+				
+				spawn(function()
+					while getgenv().loadingCfg do
+						if library.flags[tostring(name)] then
+							ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+						else
+							ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+						end
+						
+						db = library.flags[tostring(name)]
+						callback(db)
+					end
 				end)
 
 				local KeybindFrame = Instance.new("Frame")
@@ -563,29 +577,15 @@ function library:CreateContainer()
 						TextBox.Text = tostring(key)
 					end
 				end)
-				
-				
-				local setConfig = {}
-				
-				function setConfig:loadCfg(value)
-					db = value
-					callback(value)
-					if value then
-						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
-					else
-						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
-					end
-				end
-				
-				return setConfig
 			end
 
 			function drawSections:CreateDropdown(name,varbs,callback)
-
 				local dropdownSize = 0
 
 				callback = callback or function() end
 				varbs = varbs or function() end
+				
+				library.flags[tostring(name)] = tostring(varbs[1])
 
 				resize(29 + 4.7)
 
@@ -778,14 +778,11 @@ function library:CreateContainer()
 						db = false
 					end)
 					
-					local setConfig = {}
-
-					function setConfig:loadCfg(value)
-						db = value
-						callback(db)
-					end
-
-					return setConfig
+					spawn(function()
+						while getgenv().loadingCfg do
+							callback(library.flags[tostring(name)])
+						end
+					end)
 				end
 			end
 
@@ -796,6 +793,8 @@ function library:CreateContainer()
 
 				min = min or 0
 				max = max or 10
+				
+				library.flags[tostring(name)] = (max-min)
 
 				local sliderVal
 
@@ -926,16 +925,14 @@ function library:CreateContainer()
 					end)
 				end)
 				
-				local setConfig = {}
-
-				function setConfig:loadCfg(value)
-					sliderVal = value
-					ValueLabel.Text = value
-					Frame45.Size = UDim2.new(0, math.clamp(value - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
-					callback(value)
-				end
-
-				return setConfig
+				spawn(function()
+					while getgenv().loadingCfg do
+						sliderVal = library.flags[tostring(name)]
+						ValueLabel.Text = library.flags[tostring(name)]
+						Frame45.Size = UDim2.new(0, math.clamp(library.flags[tostring(name)] - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+						callback(library.flags[tostring(name)])
+					end
+				end)
 			end
 			
 			function drawSections:CreateColorPicker(name,starter,callback)
@@ -943,6 +940,8 @@ function library:CreateContainer()
 				callback = callback or function() end
 				
 				starter = starter or {255,255,255}
+				
+				library.flags[tostring(name)] = false
 				
 				local DrawColorpicker = Instance.new("TextButton")
 				local TextLabel = Instance.new("TextLabel")
@@ -1213,19 +1212,16 @@ function library:CreateContainer()
 					end
 				end)
 				
-				local setConfig = {}
+				spawn(function()
+					while getgenv().loadingCfg do
+						callback(library.flags[tostring(name)])
 
-				function setConfig:loadCfg(value)
-					starter = value
-					callback(value)
-					
-					ActualColor.BackgroundColor3 = value
-					ActualColor.UIStroke.Color = value
-					Slider.UIStroke.Color = value
-					Wheel.ImageLabel.ImageColor3 = value
-				end
-
-				return setConfig;
+						ActualColor.BackgroundColor3 = library.flags[tostring(name)]
+						ActualColor.UIStroke.Color = library.flags[tostring(name)]
+						Slider.UIStroke.Color = library.flags[tostring(name)]
+						Wheel.ImageLabel.ImageColor3 = library.flags[tostring(name)]
+					end
+				end)
 			end
 
 			return drawSections;
@@ -1319,6 +1315,8 @@ function library:CreateContainer()
 			end
 
 			function drawSections:CreateToggle(name,callback)
+				
+				library.flags[tostring(name)] = false
 				
 				local key = nil
 				local waitKey = false
@@ -1415,6 +1413,16 @@ function library:CreateContainer()
 					callback(db)
 				end)
 				
+				spawn(function()
+					while getgenv().loadingCfg do
+						if not library.flags[tostring(name)] then
+							ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
+						else
+							ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
+						end
+					end
+				end)
+				
 				local KeybindFrame = Instance.new("Frame")
 				local UICorner = Instance.new("UICorner")
 				local TextBox = Instance.new("TextBox")
@@ -1465,20 +1473,6 @@ function library:CreateContainer()
 						TextBox.Text = tostring(key)
 					end
 				end)
-				
-				local setConfig = {}
-
-				function setConfig:loadCfg(value)
-					db = value
-					callback(value)
-					if value then
-						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 0}):Play()
-					else
-						ts:Create(ImageLabel,TweenInfo.new(.5),{ImageTransparency = 1}):Play()
-					end
-				end
-
-				return setConfig
 			end
 
 			function drawSections:CreateDropdown(name,varbs,callback)
@@ -1487,6 +1481,8 @@ function library:CreateContainer()
 
 				callback = callback or function() end
 				varbs = varbs or function() end
+				
+				library.flags[tostring(name)] = tostring(varbs[1])
 
 				resize(29 + 4.7)
 
@@ -1682,14 +1678,11 @@ function library:CreateContainer()
 					end)
 				end
 				
-				local setConfig = {}
-
-				function setConfig:loadCfg(value)
-					db = value
-					callback(db)
-				end
-
-				return setConfig
+				spawn(function()
+					while getgenv().loadingCfg do
+						callback(library.flags[tostring(name)])
+					end
+				end)
 			end
 
 			function drawSections:CreateSlider(name,min,max,callback)
@@ -1699,6 +1692,8 @@ function library:CreateContainer()
 
 				min = min or 0
 				max = max or 10
+				
+				library.flags[tostring(name)] = (max-min)
 
 				local sliderVal
 
@@ -1829,16 +1824,14 @@ function library:CreateContainer()
 					end)
 				end)
 				
-				local setConfig = {}
-
-				function setConfig:loadCfg(value)
-					sliderVal = value
-					ValueLabel.Text = tostring(value)
-					Frame45.Size = UDim2.new(0, math.clamp(value - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
-					callback(value)
-				end
-
-				return setConfig
+				spawn(function()
+					while getgenv().loadingCfg do
+						sliderVal = library.flags[tostring(name)]
+						ValueLabel.Text = library.flags[tostring(name)]
+						Frame45.Size = UDim2.new(0, math.clamp(library.flags[tostring(name)] - Frame45.AbsolutePosition.X, 0, 256), 0, 4)
+						callback(library.flags[tostring(name)])
+					end
+				end)
 			end
 			
 			function drawSections:CreateColorPicker(name,starter,callback)
@@ -1846,6 +1839,8 @@ function library:CreateContainer()
 				callback = callback or function() end
 
 				starter = starter or {255,255,255}
+				
+				library.flags[tostring(name)] = false
 
 				local DrawColorpicker = Instance.new("TextButton")
 				local TextLabel = Instance.new("TextLabel")
@@ -2100,19 +2095,16 @@ function library:CreateContainer()
 					end
 				end)
 				
-				local setConfig = {}
+				spawn(function()
+					while getgenv().loadingCfg do
+						callback(library.flags[tostring(name)])
 
-				function setConfig:loadCfg(value)
-					starter = value
-					callback(value)
-
-					ActualColor.BackgroundColor3 = value
-					ActualColor.UIStroke.Color = value
-					Slider.UIStroke.Color = value
-					Wheel.ImageLabel.ImageColor3 = value
-				end
-
-				return setConfig;
+						ActualColor.BackgroundColor3 = library.flags[tostring(name)]
+						ActualColor.UIStroke.Color = library.flags[tostring(name)]
+						Slider.UIStroke.Color = library.flags[tostring(name)]
+						Wheel.ImageLabel.ImageColor3 = library.flags[tostring(name)]
+					end
+				end)
 			end
 
 			return drawSections;
@@ -2129,7 +2121,13 @@ function library:CreateContainer()
 			Save()
 		end)
 		cfgSection:CreateButton("Load",function(x)
+			library.flags = game:GetService('HttpService'):JSONEncode(readfile(Name))
 			
+			spawn(function()
+				getgenv().loadingCfg = true
+				wait()
+				getgenv().loadingCfg = false
+			end)
 		end)
 	end
 	
@@ -2176,5 +2174,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-
+5
 ]]

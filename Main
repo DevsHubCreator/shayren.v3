@@ -13,7 +13,7 @@ function library:CreateContainer()
 	
 	library.flags = {}
 	
-	local Name = "shayrenConfig.txt"
+	local Name = "shayrenConfig.json"
 	
 	getgenv().loadingCfg = false
 
@@ -2120,7 +2120,7 @@ function library:CreateContainer()
 			Save()
 		end)
 		cfgSection:CreateButton("Load",function(x)
-			library.flags = game:GetService('HttpService'):JSONEncode(readfile("shayrenConfig.txt"))
+			library.flags = game:GetService('HttpService'):JSONEncode(Name)
 			
 			spawn(function()
 				getgenv().loadingCfg = true
@@ -2173,5 +2173,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-
+45
 ]]

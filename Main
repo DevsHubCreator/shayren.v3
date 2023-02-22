@@ -410,8 +410,8 @@ function library:CreateContainer()
 
 			function drawSections:CreateToggle(name,callback)
 				
-				table.insert(Settings,{tostring(name),false})
-				local getSetting = Settings[{tostring(name)}]
+				table.insert(Settings,{tostring(name), false})
+				local getSetting = Settings[tostring(name)]
 				
 				local key = nil
 				local waitKey = false
@@ -2175,5 +2175,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-1
+
 ]]

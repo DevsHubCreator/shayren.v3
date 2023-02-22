@@ -765,6 +765,7 @@ function library:CreateContainer()
 
 					TextButton.MouseButton1Click:Connect(function()
 						callback(tostring(TextLabel.Text))
+						library.flags[tostring(name)] = tostring(TextLabel.Text)
 
 						ts:Create(ImageLabel,TweenInfo.new(.5),{Rotation = -180}):Play()
 						ts:Create(Dropdown,TweenInfo.new(.5),{Size = UDim2.new(0, 263, 0, 0)}):Play()
@@ -2120,7 +2121,9 @@ function library:CreateContainer()
 			Save()
 		end)
 		cfgSection:CreateButton("Load",function(x)
-			library.flags = game:GetService('HttpService'):JSONEncode(Name)
+			for i,v in pairs(game:GetService('HttpService'):JSONEncode(readfile(Name))) do
+				library.flags[i] = v 
+			end
 			
 			spawn(function()
 				getgenv().loadingCfg = true
@@ -2173,5 +2176,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-45
+
 ]]

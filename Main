@@ -1150,7 +1150,7 @@ function library:CreateContainer()
 					Slider.UIStroke.Color = c
 					Wheel.ImageLabel.ImageColor3 = c
 					
-					callback(c)
+					callback(ActualColor.BackgroundColor3)
 				end
 				
 				local function UpdateSlide(iX,iY)	
@@ -2029,7 +2029,7 @@ function library:CreateContainer()
 					Slider.UIStroke.Color = c
 					Wheel.ImageLabel.ImageColor3 = c
 					
-					callback(c)
+					callback(ActualColor.BackgroundColor3)
 				end
 
 				local function UpdateSlide(iX,iY)	
@@ -2170,5 +2170,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-55
+
 ]]

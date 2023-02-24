@@ -118,7 +118,7 @@ function library:CreateContainer()
 	Modal.BorderSizePixel = 0
 	Modal.Position = UDim2.new(-0.0439314991, 0, -0.1484375, 0)
 	Modal.Size = UDim2.new(0, 1460, 0, 756)
-	Modal.ZIndex = 8
+	Modal.ZIndex = 0
 	Modal.AutoButtonColor = false
 	Modal.Modal = true
 	Modal.Font = Enum.Font.SourceSans
@@ -2211,5 +2211,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-5
+
 ]]

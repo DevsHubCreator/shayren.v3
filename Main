@@ -1145,12 +1145,14 @@ function library:CreateContainer()
 				local function update()
 					local c = fromHSV(hue, saturation, value);
 
+					local r,g,b = math.floor((c.R*255)+0.5),math.floor((c.G*255)+0.5),math.floor((c.B*255)+0.5)
+
 					ActualColor.BackgroundColor3 = c
 					ActualColor.UIStroke.Color = c
 					Slider.UIStroke.Color = c
 					Wheel.ImageLabel.ImageColor3 = c
-					
-					callback(ActualColor.BackgroundColor3)
+
+					callback(r,g,b)
 				end
 				
 				local function UpdateSlide(iX,iY)	
@@ -2023,13 +2025,15 @@ function library:CreateContainer()
 
 				local function update()
 					local c = fromHSV(hue, saturation, value);
+					
+					local r,g,b = math.floor((c.R*255)+0.5),math.floor((c.G*255)+0.5),math.floor((c.B*255)+0.5)
 
 					ActualColor.BackgroundColor3 = c
 					ActualColor.UIStroke.Color = c
 					Slider.UIStroke.Color = c
 					Wheel.ImageLabel.ImageColor3 = c
 					
-					callback(ActualColor.BackgroundColor3)
+					callback(r,g,b)
 				end
 
 				local function UpdateSlide(iX,iY)	
@@ -2170,5 +2174,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-
+453
 ]]

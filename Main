@@ -36,7 +36,6 @@ function library:CreateContainer()
 	
 	shayrengs.Name = "shayren.gs"
 	shayrengs.Parent = (game:GetService("CoreGui") or gethui())
-	shayrengs.Enabled = false
 
 	Holder.Name = "Holder"
 	Holder.Parent = shayrengs
@@ -45,6 +44,7 @@ function library:CreateContainer()
 	Holder.Position = UDim2.new(0.257507503, 0, 0.137462229, 0)
 	Holder.Size = UDim2.new(0, 597, 0, 38)
 	Holder.ZIndex = 2
+	Holder.Visible = false
 
 	Container.Name = "Container"
 	Container.Parent = Holder
@@ -118,7 +118,7 @@ function library:CreateContainer()
 	Modal.BorderSizePixel = 0
 	Modal.Position = UDim2.new(-0.0439314991, 0, -0.1484375, 0)
 	Modal.Size = UDim2.new(0, 1460, 0, 756)
-	Modal.ZIndex = 0
+	Modal.ZIndex = 8
 	Modal.AutoButtonColor = false
 	Modal.Modal = true
 	Modal.Font = Enum.Font.SourceSans
@@ -141,7 +141,7 @@ function library:CreateContainer()
 	uis.InputBegan:Connect(function(input,chatting)
 		if input.KeyCode == Enum.KeyCode.Insert or input.KeyCode == Enum.KeyCode.RightControl then
 			Modal.Visible = not Modal.Visible
-			shayrengs.Enabled = not shayrengs.Enabled
+			Holder.Visible = not Holder.Visible
 		end
 	end)
 	
@@ -187,7 +187,7 @@ function library:CreateContainer()
 		TextLabel.Size = UDim2.new(0, 70, 0, 12)
 		TextLabel.ZIndex = 2
 		TextLabel.Font = Enum.Font.Gotham
-		TextLabel.Text = "shayren.gs"
+		TextLabel.Text = "shayren.side"
 		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
 		TextLabel.TextScaled = true
 		TextLabel.TextSize = 14.000
@@ -214,16 +214,15 @@ function library:CreateContainer()
 		PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		PlayerName.BackgroundTransparency = 1.000
 		PlayerName.BorderSizePixel = 0
-		PlayerName.Position = UDim2.new(0.399071425, 0, 0.300000012, 0)
+		PlayerName.Position = UDim2.new(0.372285724, 0, 0.300000012, 0)
 		PlayerName.Size = UDim2.new(0, 56, 0, 12)
 		PlayerName.ZIndex = 2
 		PlayerName.Font = Enum.Font.Gotham
-		PlayerName.Text = plr.Name
+		PlayerName.Text = "build: 5.0"
 		PlayerName.TextColor3 = Color3.fromRGB(200, 200, 200)
 		PlayerName.TextScaled = true
 		PlayerName.TextSize = 14.000
 		PlayerName.TextWrapped = true
-		PlayerName.TextXAlignment = Enum.TextXAlignment.Left
 
 		TextLabel_3.Parent = Watermark
 		TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -245,11 +244,11 @@ function library:CreateContainer()
 		Fps.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Fps.BackgroundTransparency = 1.000
 		Fps.BorderSizePixel = 0
-		Fps.Position = UDim2.new(0.707107127, 0, 0.300000012, 0)
+		Fps.Position = UDim2.new(0.702642858, 0, 0.300000012, 0)
 		Fps.Size = UDim2.new(0, 56, 0, 12)
 		Fps.ZIndex = 2
 		Fps.Font = Enum.Font.Gotham
-		Fps.Text = "fps: "..tostring(fps)
+		Fps.Text = "fps: nil"
 		Fps.TextColor3 = Color3.fromRGB(200, 200, 200)
 		Fps.TextScaled = true
 		Fps.TextSize = 14.000
@@ -286,7 +285,7 @@ function library:CreateContainer()
 		Tab1.BackgroundColor3 = Color3.fromRGB(27, 27, 54)
 		Tab1.BorderSizePixel = 0
 		Tab1.Position = UDim2.new(0, 0, 0.236842111, 0)
-		Tab1.Size = UDim2.new(0, 113, 0, 29)
+		Tab1.Size = UDim2.new(0, 93, 0, 29)
 		Tab1.ZIndex = 3
 		Tab1.AutoButtonColor = false
 		Tab1.Font = Enum.Font.SourceSans
@@ -300,15 +299,15 @@ function library:CreateContainer()
 		Frame.BackgroundColor3 = Color3.fromRGB(27, 27, 54)
 		Frame.BorderSizePixel = 0
 		Frame.Position = UDim2.new(0, 0, 0.241379574, 0)
-		Frame.Size = UDim2.new(0, 113, 0, 22)
+		Frame.Size = UDim2.new(0, 93, 0, 22)
 		Frame.ZIndex = 2
 
 		TextLabel.Parent = Tab1
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TextLabel.BackgroundTransparency = 1.000
 		TextLabel.BorderSizePixel = 0
-		TextLabel.Position = UDim2.new(0.110051513, 0, 0.206896305, 0)
-		TextLabel.Size = UDim2.new(0, 87, 0, 17)
+		TextLabel.Position = UDim2.new(0.056, 0, 0.276, 0)
+		TextLabel.Size = UDim2.new(0, 82, 0, 14)
 		TextLabel.ZIndex = 3
 		TextLabel.Font = Enum.Font.Gotham
 		TextLabel.Text = name

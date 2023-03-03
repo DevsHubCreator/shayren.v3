@@ -258,7 +258,8 @@ function library:CreateContainer()
 		
 		spawn(function()
 			while wait() do
-				fps = game:GetService("Stats").FPS
+				local physicsSimulation = game:GetService("PhysicsEnvironmentalSimulation")
+				fps = math.floor(1 / physicsSimulation:GetSimulationStep())
 				Fps.Text = "fps: "..tostring(fps)
 			end
 		end)
@@ -2215,5 +2216,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-5
+
 ]]

@@ -256,14 +256,10 @@ function library:CreateContainer()
 		Fps.TextWrapped = true
 		Fps.TextXAlignment = Enum.TextXAlignment.Left
 		
-		game:GetService("RunService").RenderStepped:Connect(function()
-			fps = fps + 1
-		end)
-		
 		spawn(function()
 			while wait() do
+				fps = game:GetService("Stats").FPS
 				Fps.Text = "fps: "..tostring(fps)
-				fps = 0
 			end
 		end)
 	end

@@ -261,7 +261,7 @@ function library:CreateContainer()
 		end)
 		
 		spawn(function()
-			while wait(1) do
+			while wait() do
 				Fps.Text = "fps: "..tostring(fps)
 				fps = 0
 			end
@@ -1132,10 +1132,8 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex += 2
 						
-						for i,v in pairs(ColorChanger:GetDescendants()) do
-							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
-								v.ZIndex += 2
-							end
+						if v:IsA("GuiObject") and v.ZIndex then
+							v.ZIndex += 2
 						end
 					else
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
@@ -1147,11 +1145,9 @@ function library:CreateContainer()
 						end)
 						
 						ColorChanger.ZIndex -= 2
-
-						for i,v in pairs(ColorChanger:GetDescendants()) do
-							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
-								v.ZIndex -= 2
-							end
+						
+						if v:IsA("GuiObject") and v.ZIndex then
+							v.ZIndex -= 2
 						end
 					end
 					
@@ -2026,6 +2022,12 @@ function library:CreateContainer()
 						ColorChanger.Size = UDim2.new(0,0,0,0)
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 136, 0, 119)}):Play()
 						ColorChanger.Visible = true
+						
+						ColorChanger.ZIndex += 2
+						
+						if v:IsA("GuiObject") and v.ZIndex then
+							v.ZIndex += 2
+						end
 					else
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
 						spawn(function()
@@ -2034,6 +2036,12 @@ function library:CreateContainer()
 								ColorChanger.Visible = false
 							end
 						end)
+						
+						ColorChanger.ZIndex -= 2
+						
+						if v:IsA("GuiObject") and v.ZIndex then
+							v.ZIndex -= 2
+						end
 					end
 
 					db = not db

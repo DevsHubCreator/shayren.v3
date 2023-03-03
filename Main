@@ -1132,7 +1132,7 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex += 2
 						
-						if v:IsA("GuiObject") and v.ZIndex then
+						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
 							v.ZIndex += 2
 						end
 					else
@@ -1146,7 +1146,7 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex -= 2
 						
-						if v:IsA("GuiObject") and v.ZIndex then
+						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
 							v.ZIndex -= 2
 						end
 					end
@@ -2025,7 +2025,7 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex += 2
 						
-						if v:IsA("GuiObject") and v.ZIndex then
+						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
 							v.ZIndex += 2
 						end
 					else
@@ -2039,7 +2039,7 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex -= 2
 						
-						if v:IsA("GuiObject") and v.ZIndex then
+						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
 							v.ZIndex -= 2
 						end
 					end
@@ -2219,5 +2219,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-
+5
 ]]

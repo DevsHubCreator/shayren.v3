@@ -256,12 +256,9 @@ function library:CreateContainer()
 		Fps.TextWrapped = true
 		Fps.TextXAlignment = Enum.TextXAlignment.Left
 		
-		spawn(function()
-			while wait() do
-				local physicsSimulation = game:GetService("PhysicsEnvironmentalSimulation")
-				fps = math.floor(1 / physicsSimulation:GetSimulationStep())
-				Fps.Text = "fps: "..tostring(fps)
-			end
+		game:GetService("RunService").RenderStepped:Connect(function()
+		    local fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait())
+		    Fps.Text = "fps: "..tostring(fps)
 		end)
 	end
 	
@@ -1129,8 +1126,10 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex += 2
 						
-						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-							v.ZIndex += 2
+						for i,v in pairs(ColorChanger:GetDescendants()) do
+							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
+								v.ZIndex += 3
+							end
 						end
 					else
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
@@ -1143,8 +1142,10 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex -= 2
 						
-						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-							v.ZIndex -= 2
+						for i,v in pairs(ColorChanger:GetDescendants()) do
+							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
+								v.ZIndex -= 3
+							end
 						end
 					end
 					
@@ -2022,8 +2023,10 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex += 2
 						
-						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-							v.ZIndex += 2
+						for i,v in pairs(ColorChanger:GetDescendants()) do
+							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
+								v.ZIndex += 3
+							end
 						end
 					else
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
@@ -2036,8 +2039,10 @@ function library:CreateContainer()
 						
 						ColorChanger.ZIndex -= 2
 						
-						if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-							v.ZIndex -= 2
+						for i,v in pairs(ColorChanger:GetDescendants()) do
+							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
+								v.ZIndex -= 3
+							end
 						end
 					end
 
@@ -2216,5 +2221,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-
+p
 ]]

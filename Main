@@ -1131,11 +1131,11 @@ function library:CreateContainer()
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 136, 0, 119)}):Play()
 						ColorChanger.Visible = true
 						
-						ColorChanger.ZIndex += 2
+						ColorChanger.ZIndex += 4
 						
 						for i,v in pairs(ColorChanger:GetDescendants()) do
 							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
-								v.ZIndex += 2
+								v.ZIndex += 4
 							end
 						end
 					else
@@ -1147,11 +1147,11 @@ function library:CreateContainer()
 							end
 						end)
 						
-						ColorChanger.ZIndex -= 2
+						ColorChanger.ZIndex -= 4
 
 						for i,v in pairs(ColorChanger:GetDescendants()) do
 							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
-								v.ZIndex -= 2
+								v.ZIndex -= 4
 							end
 						end
 					end
@@ -2022,11 +2022,20 @@ function library:CreateContainer()
 
 				local db = false
 
+
 				DrawColorpicker.MouseButton1Click:Connect(function()
 					if not db then
 						ColorChanger.Size = UDim2.new(0,0,0,0)
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 136, 0, 119)}):Play()
 						ColorChanger.Visible = true
+
+						ColorChanger.ZIndex += 4
+
+						for i,v in pairs(ColorChanger:GetDescendants()) do
+							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
+								v.ZIndex += 4
+							end
+						end
 					else
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
 						spawn(function()
@@ -2035,11 +2044,18 @@ function library:CreateContainer()
 								ColorChanger.Visible = false
 							end
 						end)
+
+						ColorChanger.ZIndex -= 4
+
+						for i,v in pairs(ColorChanger:GetDescendants()) do
+							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
+								v.ZIndex -= 4
+							end
+						end
 					end
 
 					db = not db
 				end)
-
 				----------------------------
 
 				local ceil,clamp,atan2,pi = math.ceil,math.clamp,math.atan2,math.pi

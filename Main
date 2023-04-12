@@ -117,8 +117,8 @@ function library:CreateContainer()
 	Modal.BackgroundTransparency = 1.000
 	Modal.BorderSizePixel = 0
 	Modal.Position = UDim2.new(-0.0439314991, 0, -0.1484375, 0)
-	Modal.Size = UDim2.new(0, 1460, 0, 756)
-	Modal.ZIndex = 0
+	Modal.Size = UDim2.new(1.115, 0, 1.181, 0)
+	Modal.ZIndex = 1
 	Modal.AutoButtonColor = false
 	Modal.Modal = true
 	Modal.Font = Enum.Font.SourceSans
@@ -134,7 +134,7 @@ function library:CreateContainer()
 	Frame.BackgroundTransparency = 0.200
 	Frame.BorderSizePixel = 0
 	Frame.Position = UDim2.new(-0.0678082258, 0, -0.124338612, 0)
-	Frame.Size = UDim2.new(0, 1659, 0, 944)
+	Frame.Size = UDim2.new(1.136, 0, 1.249, 0)
 	Frame.Visible = false
 	Frame.ZIndex = -1
 	
@@ -257,8 +257,14 @@ function library:CreateContainer()
 		Fps.TextXAlignment = Enum.TextXAlignment.Left
 		
 		game:GetService("RunService").RenderStepped:Connect(function()
-		    local fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait())
-		    Fps.Text = "fps: "..tostring(fps)
+			fps = fps + 1
+		end)
+		
+		spawn(function()
+			while wait(1) do
+				Fps.Text = "fps: "..tostring(fps)
+				fps = 0
+			end
 		end)
 	end
 	
@@ -1127,8 +1133,8 @@ function library:CreateContainer()
 						ColorChanger.ZIndex += 2
 						
 						for i,v in pairs(ColorChanger:GetDescendants()) do
-							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-								v.ZIndex += 3
+							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
+								v.ZIndex += 2
 							end
 						end
 					else
@@ -1141,10 +1147,10 @@ function library:CreateContainer()
 						end)
 						
 						ColorChanger.ZIndex -= 2
-						
+
 						for i,v in pairs(ColorChanger:GetDescendants()) do
-							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-								v.ZIndex -= 3
+							if v:IsA("Frame") or v:IsA("TextButton") or v:IsA("ImageLabel") or v:IsA("ImageButton") then
+								v.ZIndex -= 2
 							end
 						end
 					end
@@ -2020,14 +2026,6 @@ function library:CreateContainer()
 						ColorChanger.Size = UDim2.new(0,0,0,0)
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 136, 0, 119)}):Play()
 						ColorChanger.Visible = true
-						
-						ColorChanger.ZIndex += 2
-						
-						for i,v in pairs(ColorChanger:GetDescendants()) do
-							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-								v.ZIndex += 3
-							end
-						end
 					else
 						ts:Create(ColorChanger,TweenInfo.new(.5),{Size = UDim2.new(0, 0, 0, 0)}):Play()
 						spawn(function()
@@ -2036,14 +2034,6 @@ function library:CreateContainer()
 								ColorChanger.Visible = false
 							end
 						end)
-						
-						ColorChanger.ZIndex -= 2
-						
-						for i,v in pairs(ColorChanger:GetDescendants()) do
-							if v and typeof(v) == "Instance" and v:IsA("GuiObject") and v.ZIndex then
-								v.ZIndex -= 3
-							end
-						end
 					end
 
 					db = not db
@@ -2221,5 +2211,5 @@ end)
 cfgSector:CreateButton("Load",function()
 	toggle:loadCfg(Settings.Toggle)
 end)
-p
+
 ]]
